@@ -1,0 +1,28 @@
+{
+    "benchApp": {
+        "unit" : {
+            "home": {
+                "title": "Units",
+                "createLabel": "Создать новый Unit",
+                "createOrEditLabel": "Создать или отредактировать Unit",
+                "search": "Найти Unit"
+            },
+            "created": "Новый Unit создан с идентификатором {{ param }}",
+            "updated": "Unit обновлен с идентификатором {{ param }}",
+            "deleted": "Unit удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Unit {{ id }}?"
+            },
+            "detail": {
+                "title": "Unit"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name",
+            "owner": "Owner",
+            "location": "Location",
+            "skill": "Skill",
+            "parent": "Parent",
+            "children": "Children"
+        }
+    }
+}

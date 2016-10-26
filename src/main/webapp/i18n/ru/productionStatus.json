@@ -1,0 +1,22 @@
+{
+    "benchApp": {
+        "productionStatus" : {
+            "home": {
+                "title": "Production Statuses",
+                "createLabel": "Создать новый Production Status",
+                "createOrEditLabel": "Создать или отредактировать Production Status",
+                "search": "Найти Production Status"
+            },
+            "created": "Новый Production Status создан с идентификатором {{ param }}",
+            "updated": "Production Status обновлен с идентификатором {{ param }}",
+            "deleted": "Production Status удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Production Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Production Status"
+            },
+            "name": "Name"
+        }
+    }
+}

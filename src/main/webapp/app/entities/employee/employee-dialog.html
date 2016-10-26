@@ -1,0 +1,167 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEmployeeLabel" data-translate="benchApp.employee.home.createOrEditLabel">Create or edit a Employee</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.employee.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.employee.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.upsaId" for="field_upsaId">Upsa Id</label>
+            <input type="text" class="form-control" name="upsaId" id="field_upsaId"
+                    ng-model="vm.employee.upsaId"
+                    required />
+            <div ng-show="editForm.upsaId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.upsaId.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.employee.email"
+                    required />
+            <div ng-show="editForm.email.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.email.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.fullName" for="field_fullName">Full Name</label>
+            <input type="text" class="form-control" name="fullName" id="field_fullName"
+                    ng-model="vm.employee.fullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.comment" for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                    ng-model="vm.employee.comment"
+                    ng-maxlength="255" />
+            <div ng-show="editForm.comment.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.comment.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.managerFullName" for="field_managerFullName">Manager Full Name</label>
+            <input type="text" class="form-control" name="managerFullName" id="field_managerFullName"
+                    ng-model="vm.employee.managerFullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.managerId" for="field_managerId">Manager Id</label>
+            <input type="text" class="form-control" name="managerId" id="field_managerId"
+                    ng-model="vm.employee.managerId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.active" for="field_active">Active</label>
+            <input type="checkbox" class="form-control" name="active" id="field_active"
+                    ng-model="vm.employee.active"
+                     />
+            <div ng-show="editForm.active.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.active.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.hireDate" for="field_hireDate">Hire Date</label>
+                <div class="input-group">
+                    <input id="field_hireDate" type="text" class="form-control" name="hireDate" datetime-picker="{{dateformat}}" ng-model="vm.employee.hireDate" is-open="vm.datePickerOpenStatus.hireDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('hireDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.availableFrom" for="field_availableFrom">Available From</label>
+                <div class="input-group">
+                    <input id="field_availableFrom" type="text" class="form-control" name="availableFrom" datetime-picker="{{dateformat}}" ng-model="vm.employee.availableFrom" is-open="vm.datePickerOpenStatus.availableFrom"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('availableFrom')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.employee.gender" for="field_gender">Gender</label>
+            <select class="form-control" name="gender" ng-model="vm.employee.gender" id="field_gender">
+                <option value="MALE" data-translate="benchApp.Gender.MALE">MALE</option>
+                <option value="FEMALE" data-translate="benchApp.Gender.FEMALE">FEMALE</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="benchApp.employee.probation" for="field_probation">Probation</label>
+            <select class="form-control" id="field_probation" name="probation" ng-model="vm.employee.probation" ng-options="probationStatus as probationStatus.id for probationStatus in vm.probations | orderBy:'id' track by probationStatus.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.employee.location" for="field_location">Location</label>
+            <select class="form-control" id="field_location" name="location" ng-model="vm.employee.location" ng-options="location as location.id for location in vm.locations | orderBy:'id' track by location.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.employee.primarySkill" for="field_primarySkill">Primary Skill</label>
+            <select class="form-control" id="field_primarySkill" name="primarySkill" ng-model="vm.employee.primarySkill" ng-options="primarySkill as primarySkill.id for primarySkill in vm.primaryskills | orderBy:'id' track by primarySkill.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.employee.title" for="field_title">Title</label>
+            <select class="form-control" id="field_title" name="title" ng-model="vm.employee.title" ng-options="title as title.id for title in vm.titles | orderBy:'id' track by title.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.employee.englishLevel" for="field_englishLevel">English Level</label>
+            <select class="form-control" id="field_englishLevel" name="englishLevel" ng-model="vm.employee.englishLevel" ng-options="languageLevel as languageLevel.id for languageLevel in vm.englishlevels | orderBy:'id' track by languageLevel.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.employee.productionStatus" for="field_productionStatus">Production Status</label>
+            <select class="form-control" id="field_productionStatus" name="productionStatus" ng-model="vm.employee.productionStatus" ng-options="productionStatus as productionStatus.id for productionStatus in vm.productionstatuses | orderBy:'id' track by productionStatus.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.employee.jobFunction" for="field_jobFunction">Job Function</label>
+            <select class="form-control" id="field_jobFunction" name="jobFunction" ng-model="vm.employee.jobFunction" ng-options="jobFunction as jobFunction.id for jobFunction in vm.jobfunctions | orderBy:'id' track by jobFunction.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.employee.unit" for="field_unit">Unit</label>
+            <select class="form-control" id="field_unit" name="unit" ng-model="vm.employee.unit" ng-options="unit as unit.id for unit in vm.units | orderBy:'id' track by unit.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

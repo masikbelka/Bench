@@ -1,0 +1,18 @@
+{
+    "benchApp": {
+        "PositionStatus" : {
+            "null": "",
+            "CREATED": "CREATED",
+            "CLOSED": "CLOSED",
+            "ASSIGNED": "ASSIGNED",
+            "ON_HOLD": "ON_HOLD",
+            "CANCELLED": "CANCELLED",
+            "IN_PROGRESS": "IN_PROGRESS",
+            "APPROVED": "APPROVED",
+            "OPEN": "OPEN",
+            "TERMINATED": "TERMINATED",
+            "BOOKED": "BOOKED",
+            "REJECTED": "REJECTED"
+        }
+    }
+}

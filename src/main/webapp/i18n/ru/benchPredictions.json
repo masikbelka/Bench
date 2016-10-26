@@ -1,0 +1,28 @@
+{
+    "benchApp": {
+        "benchPredictions" : {
+            "home": {
+                "title": "Bench Predictions",
+                "createLabel": "Создать новый Bench Predictions",
+                "createOrEditLabel": "Создать или отредактировать Bench Predictions",
+                "search": "Найти Bench Predictions"
+            },
+            "created": "Новый Bench Predictions создан с идентификатором {{ param }}",
+            "updated": "Bench Predictions обновлен с идентификатором {{ param }}",
+            "deleted": "Bench Predictions удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Bench Predictions {{ id }}?"
+            },
+            "detail": {
+                "title": "Bench Predictions"
+            },
+            "createdTime": "Created Time",
+            "ignored": "Ignored",
+            "ignoredDays": "Ignored Days",
+            "readyToBench": "Ready To Bench",
+            "readyToProduction": "Ready To Production",
+            "details": "Details",
+            "employee": "Employee"
+        }
+    }
+}

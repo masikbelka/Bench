@@ -1,0 +1,30 @@
+{
+    "benchApp": {
+        "opportunityPosition" : {
+            "home": {
+                "title": "Opportunity Positions",
+                "createLabel": "Create a new Opportunity Position",
+                "createOrEditLabel": "Create or edit a Opportunity Position",
+                "search": "Search for Opportunity Position"
+            },
+            "created": "A new Opportunity Position is created with identifier {{ param }}",
+            "updated": "A Opportunity Position is updated with identifier {{ param }}",
+            "deleted": "A Opportunity Position is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Opportunity Position {{ id }}?"
+            },
+            "detail": {
+                "title": "Opportunity Position"
+            },
+            "createdTime": "Created Time",
+            "employeeUpsaId": "Employee Upsa Id",
+            "employeeFullName": "Employee Full Name",
+            "ownerUpsaId": "Owner Upsa Id",
+            "ownerFullName": "Owner Full Name",
+            "status": "Status",
+            "opportunity": "Opportunity",
+            "role": "Role",
+            "employee": "Employee"
+        }
+    }
+}

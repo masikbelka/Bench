@@ -1,0 +1,26 @@
+{
+    "benchApp": {
+        "benchCommentHistory" : {
+            "home": {
+                "title": "Bench Comment Histories",
+                "createLabel": "Создать новый Bench Comment History",
+                "createOrEditLabel": "Создать или отредактировать Bench Comment History",
+                "search": "Найти Bench Comment History"
+            },
+            "created": "Новый Bench Comment History создан с идентификатором {{ param }}",
+            "updated": "Bench Comment History обновлен с идентификатором {{ param }}",
+            "deleted": "Bench Comment History удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Bench Comment History {{ id }}?"
+            },
+            "detail": {
+                "title": "Bench Comment History"
+            },
+            "changeTime": "Change Time",
+            "oldValue": "Old Value",
+            "newValue": "New Value",
+            "user": "User",
+            "employee": "Employee"
+        }
+    }
+}

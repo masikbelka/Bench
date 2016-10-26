@@ -1,0 +1,112 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOpportunityPositionLabel" data-translate="benchApp.opportunityPosition.home.createOrEditLabel">Create or edit a Opportunity Position</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.opportunityPosition.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.opportunityPosition.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunityPosition.createdTime" for="field_createdTime">Created Time</label>
+                <div class="input-group">
+                    <input id="field_createdTime" type="text" class="form-control" name="createdTime" uib-datepicker-popup="{{dateformat}}" ng-model="vm.opportunityPosition.createdTime" is-open="vm.datePickerOpenStatus.createdTime"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.createdTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.createdTime.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunityPosition.employeeUpsaId" for="field_employeeUpsaId">Employee Upsa Id</label>
+            <input type="text" class="form-control" name="employeeUpsaId" id="field_employeeUpsaId"
+                    ng-model="vm.opportunityPosition.employeeUpsaId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunityPosition.employeeFullName" for="field_employeeFullName">Employee Full Name</label>
+            <input type="text" class="form-control" name="employeeFullName" id="field_employeeFullName"
+                    ng-model="vm.opportunityPosition.employeeFullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunityPosition.ownerUpsaId" for="field_ownerUpsaId">Owner Upsa Id</label>
+            <input type="text" class="form-control" name="ownerUpsaId" id="field_ownerUpsaId"
+                    ng-model="vm.opportunityPosition.ownerUpsaId"
+                    required />
+            <div ng-show="editForm.ownerUpsaId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ownerUpsaId.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunityPosition.ownerFullName" for="field_ownerFullName">Owner Full Name</label>
+            <input type="text" class="form-control" name="ownerFullName" id="field_ownerFullName"
+                    ng-model="vm.opportunityPosition.ownerFullName"
+                    required />
+            <div ng-show="editForm.ownerFullName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ownerFullName.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunityPosition.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.opportunityPosition.status" id="field_status">
+                <option value="CREATED" data-translate="benchApp.PositionStatus.CREATED">CREATED</option>
+                <option value="CLOSED" data-translate="benchApp.PositionStatus.CLOSED">CLOSED</option>
+                <option value="ASSIGNED" data-translate="benchApp.PositionStatus.ASSIGNED">ASSIGNED</option>
+                <option value="ON_HOLD" data-translate="benchApp.PositionStatus.ON_HOLD">ON_HOLD</option>
+                <option value="CANCELLED" data-translate="benchApp.PositionStatus.CANCELLED">CANCELLED</option>
+                <option value="IN_PROGRESS" data-translate="benchApp.PositionStatus.IN_PROGRESS">IN_PROGRESS</option>
+                <option value="APPROVED" data-translate="benchApp.PositionStatus.APPROVED">APPROVED</option>
+                <option value="OPEN" data-translate="benchApp.PositionStatus.OPEN">OPEN</option>
+                <option value="TERMINATED" data-translate="benchApp.PositionStatus.TERMINATED">TERMINATED</option>
+                <option value="BOOKED" data-translate="benchApp.PositionStatus.BOOKED">BOOKED</option>
+                <option value="REJECTED" data-translate="benchApp.PositionStatus.REJECTED">REJECTED</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="benchApp.opportunityPosition.opportunity" for="field_opportunity">Opportunity</label>
+            <select class="form-control" id="field_opportunity" name="opportunity" ng-model="vm.opportunityPosition.opportunity" ng-options="opportunity as opportunity.id for opportunity in vm.opportunities track by opportunity.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.opportunityPosition.role" for="field_role">Role</label>
+            <select class="form-control" id="field_role" name="role" ng-model="vm.opportunityPosition.role" ng-options="projectRole as projectRole.id for projectRole in vm.roles | orderBy:'id' track by projectRole.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.opportunityPosition.employee" for="field_employee">Employee</label>
+            <select class="form-control" id="field_employee" name="employee" ng-model="vm.opportunityPosition.employee" ng-options="employee as employee.id for employee in vm.employees track by employee.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+{
+    "benchApp": {
+        "employee" : {
+            "home": {
+                "title": "Employees",
+                "createLabel": "Создать новый Employee",
+                "createOrEditLabel": "Создать или отредактировать Employee",
+                "search": "Найти Employee"
+            },
+            "created": "Новый Employee создан с идентификатором {{ param }}",
+            "updated": "Employee обновлен с идентификатором {{ param }}",
+            "deleted": "Employee удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Employee {{ id }}?"
+            },
+            "detail": {
+                "title": "Employee"
+            },
+            "upsaId": "Upsa Id",
+            "email": "Email",
+            "fullName": "Full Name",
+            "comment": "Comment",
+            "managerFullName": "Manager Full Name",
+            "managerId": "Manager Id",
+            "active": "Active",
+            "hireDate": "Hire Date",
+            "availableFrom": "Available From",
+            "gender": "Gender",
+            "probation": "Probation",
+            "location": "Location",
+            "primarySkill": "Primary Skill",
+            "title": "Title",
+            "englishLevel": "English Level",
+            "productionStatus": "Production Status",
+            "jobFunction": "Job Function",
+            "unit": "Unit",
+            "benchHistory": "Bench History",
+            "projectsWorkload": "Projects Workload",
+            "predictions": "Predictions",
+            "opportunityPosition": "Opportunity Position"
+        }
+    }
+}

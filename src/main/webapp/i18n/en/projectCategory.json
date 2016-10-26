@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "projectCategory" : {
+            "home": {
+                "title": "Project Categories",
+                "createLabel": "Create a new Project Category",
+                "createOrEditLabel": "Create or edit a Project Category",
+                "search": "Search for Project Category"
+            },
+            "created": "A new Project Category is created with identifier {{ param }}",
+            "updated": "A Project Category is updated with identifier {{ param }}",
+            "deleted": "A Project Category is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Project Category {{ id }}?"
+            },
+            "detail": {
+                "title": "Project Category"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name"
+        }
+    }
+}

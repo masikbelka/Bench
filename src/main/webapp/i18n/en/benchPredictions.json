@@ -1,0 +1,28 @@
+{
+    "benchApp": {
+        "benchPredictions" : {
+            "home": {
+                "title": "Bench Predictions",
+                "createLabel": "Create a new Bench Predictions",
+                "createOrEditLabel": "Create or edit a Bench Predictions",
+                "search": "Search for Bench Predictions"
+            },
+            "created": "A new Bench Predictions is created with identifier {{ param }}",
+            "updated": "A Bench Predictions is updated with identifier {{ param }}",
+            "deleted": "A Bench Predictions is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bench Predictions {{ id }}?"
+            },
+            "detail": {
+                "title": "Bench Predictions"
+            },
+            "createdTime": "Created Time",
+            "ignored": "Ignored",
+            "ignoredDays": "Ignored Days",
+            "readyToBench": "Ready To Bench",
+            "readyToProduction": "Ready To Production",
+            "details": "Details",
+            "employee": "Employee"
+        }
+    }
+}

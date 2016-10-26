@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "title" : {
+            "home": {
+                "title": "Titles",
+                "createLabel": "Создать новый Title",
+                "createOrEditLabel": "Создать или отредактировать Title",
+                "search": "Найти Title"
+            },
+            "created": "Новый Title создан с идентификатором {{ param }}",
+            "updated": "Title обновлен с идентификатором {{ param }}",
+            "deleted": "Title удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Title {{ id }}?"
+            },
+            "detail": {
+                "title": "Title"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name"
+        }
+    }
+}

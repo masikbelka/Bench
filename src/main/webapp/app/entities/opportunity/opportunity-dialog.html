@@ -1,0 +1,164 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOpportunityLabel" data-translate="benchApp.opportunity.home.createOrEditLabel">Create or edit a Opportunity</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.opportunity.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.opportunity.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.staffingId" for="field_staffingId">Staffing Id</label>
+            <input type="text" class="form-control" name="staffingId" id="field_staffingId"
+                    ng-model="vm.opportunity.staffingId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.opportunity.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.ownerUpsaId" for="field_ownerUpsaId">Owner Upsa Id</label>
+            <input type="text" class="form-control" name="ownerUpsaId" id="field_ownerUpsaId"
+                    ng-model="vm.opportunity.ownerUpsaId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.ownerFullName" for="field_ownerFullName">Owner Full Name</label>
+            <input type="text" class="form-control" name="ownerFullName" id="field_ownerFullName"
+                    ng-model="vm.opportunity.ownerFullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.startDate" for="field_startDate">Start Date</label>
+                <div class="input-group">
+                    <input id="field_startDate" type="text" class="form-control" name="startDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.opportunity.startDate" is-open="vm.datePickerOpenStatus.startDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.endDate" for="field_endDate">End Date</label>
+                <div class="input-group">
+                    <input id="field_endDate" type="text" class="form-control" name="endDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.opportunity.endDate" is-open="vm.datePickerOpenStatus.endDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.opportunity.status" id="field_status">
+                <option value="CREATED" data-translate="benchApp.OpportunityStatus.CREATED">CREATED</option>
+                <option value="CLOSED" data-translate="benchApp.OpportunityStatus.CLOSED">CLOSED</option>
+                <option value="ACTIVE" data-translate="benchApp.OpportunityStatus.ACTIVE">ACTIVE</option>
+                <option value="ON_HOLD" data-translate="benchApp.OpportunityStatus.ON_HOLD">ON_HOLD</option>
+                <option value="CANCELLED" data-translate="benchApp.OpportunityStatus.CANCELLED">CANCELLED</option>
+                <option value="IN_PROGRESS" data-translate="benchApp.OpportunityStatus.IN_PROGRESS">IN_PROGRESS</option>
+                <option value="APPROVED" data-translate="benchApp.OpportunityStatus.APPROVED">APPROVED</option>
+                <option value="OPEN" data-translate="benchApp.OpportunityStatus.OPEN">OPEN</option>
+                <option value="DRAFT" data-translate="benchApp.OpportunityStatus.DRAFT">DRAFT</option>
+                <option value="SUBMITTED" data-translate="benchApp.OpportunityStatus.SUBMITTED">SUBMITTED</option>
+                <option value="REJECTED" data-translate="benchApp.OpportunityStatus.REJECTED">REJECTED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.opportunity.description"
+                    ng-maxlength="1000" />
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="1000">
+                    This field cannot be longer than 1000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.staffingCoordinatiorUpsaId" for="field_staffingCoordinatiorUpsaId">Staffing Coordinatior Upsa Id</label>
+            <input type="text" class="form-control" name="staffingCoordinatiorUpsaId" id="field_staffingCoordinatiorUpsaId"
+                    ng-model="vm.opportunity.staffingCoordinatiorUpsaId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.staffingCoordinatiorFullName" for="field_staffingCoordinatiorFullName">Staffing Coordinatior Full Name</label>
+            <input type="text" class="form-control" name="staffingCoordinatiorFullName" id="field_staffingCoordinatiorFullName"
+                    ng-model="vm.opportunity.staffingCoordinatiorFullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.responsibleManagerUpsaId" for="field_responsibleManagerUpsaId">Responsible Manager Upsa Id</label>
+            <input type="text" class="form-control" name="responsibleManagerUpsaId" id="field_responsibleManagerUpsaId"
+                    ng-model="vm.opportunity.responsibleManagerUpsaId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.responsibleManagerFullName" for="field_responsibleManagerFullName">Responsible Manager Full Name</label>
+            <input type="text" class="form-control" name="responsibleManagerFullName" id="field_responsibleManagerFullName"
+                    ng-model="vm.opportunity.responsibleManagerFullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.supervisorUpsaId" for="field_supervisorUpsaId">Supervisor Upsa Id</label>
+            <input type="text" class="form-control" name="supervisorUpsaId" id="field_supervisorUpsaId"
+                    ng-model="vm.opportunity.supervisorUpsaId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.supervisorFullName" for="field_supervisorFullName">Supervisor Full Name</label>
+            <input type="text" class="form-control" name="supervisorFullName" id="field_supervisorFullName"
+                    ng-model="vm.opportunity.supervisorFullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.deliveryManagerUpsaId" for="field_deliveryManagerUpsaId">Delivery Manager Upsa Id</label>
+            <input type="text" class="form-control" name="deliveryManagerUpsaId" id="field_deliveryManagerUpsaId"
+                    ng-model="vm.opportunity.deliveryManagerUpsaId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.deliveryManagerFullName" for="field_deliveryManagerFullName">Delivery Manager Full Name</label>
+            <input type="text" class="form-control" name="deliveryManagerFullName" id="field_deliveryManagerFullName"
+                    ng-model="vm.opportunity.deliveryManagerFullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.accountManagerUpsaId" for="field_accountManagerUpsaId">Account Manager Upsa Id</label>
+            <input type="text" class="form-control" name="accountManagerUpsaId" id="field_accountManagerUpsaId"
+                    ng-model="vm.opportunity.accountManagerUpsaId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.opportunity.accountManagerFullName" for="field_accountManagerFullName">Account Manager Full Name</label>
+            <input type="text" class="form-control" name="accountManagerFullName" id="field_accountManagerFullName"
+                    ng-model="vm.opportunity.accountManagerFullName"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="benchApp.opportunity.type" for="field_type">Type</label>
+            <select class="form-control" id="field_type" name="type" ng-model="vm.opportunity.type" ng-options="opportunityType as opportunityType.id for opportunityType in vm.types | orderBy:'id' track by opportunityType.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

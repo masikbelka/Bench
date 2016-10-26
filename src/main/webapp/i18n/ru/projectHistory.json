@@ -1,0 +1,26 @@
+{
+    "benchApp": {
+        "projectHistory" : {
+            "home": {
+                "title": "Project Histories",
+                "createLabel": "Создать новый Project History",
+                "createOrEditLabel": "Создать или отредактировать Project History",
+                "search": "Найти Project History"
+            },
+            "created": "Новый Project History создан с идентификатором {{ param }}",
+            "updated": "Project History обновлен с идентификатором {{ param }}",
+            "deleted": "Project History удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Project History {{ id }}?"
+            },
+            "detail": {
+                "title": "Project History"
+            },
+            "date": "Date",
+            "workload": "Workload",
+            "employee": "Employee",
+            "role": "Role",
+            "project": "Project"
+        }
+    }
+}

@@ -1,0 +1,74 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUnitLabel" data-translate="benchApp.unit.home.createOrEditLabel">Create or edit a Unit</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.unit.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.unit.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.unit.upsaId" for="field_upsaId">Upsa Id</label>
+            <input type="text" class="form-control" name="upsaId" id="field_upsaId"
+                    ng-model="vm.unit.upsaId"
+                    required />
+            <div ng-show="editForm.upsaId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.upsaId.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.unit.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.unit.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="benchApp.unit.owner" for="field_owner">Owner</label>
+            <select class="form-control" id="field_owner" name="owner" ng-model="vm.unit.owner" ng-options="employee as employee.id for employee in vm.owners | orderBy:'id' track by employee.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.unit.location" for="field_location">Location</label>
+            <select class="form-control" id="field_location" name="location" ng-model="vm.unit.location" ng-options="location as location.id for location in vm.locations | orderBy:'id' track by location.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.unit.skill" for="field_skill">Skill</label>
+            <select class="form-control" id="field_skill" name="skill" ng-model="vm.unit.skill" ng-options="primarySkill as primarySkill.id for primarySkill in vm.skills | orderBy:'id' track by primarySkill.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.unit.parent" for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" ng-model="vm.unit.parent" ng-options="unit as unit.id for unit in vm.units track by unit.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

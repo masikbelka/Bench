@@ -1,0 +1,24 @@
+{
+    "benchApp": {
+        "primarySkill" : {
+            "home": {
+                "title": "Primary Skills",
+                "createLabel": "Create a new Primary Skill",
+                "createOrEditLabel": "Create or edit a Primary Skill",
+                "search": "Search for Primary Skill"
+            },
+            "created": "A new Primary Skill is created with identifier {{ param }}",
+            "updated": "A Primary Skill is updated with identifier {{ param }}",
+            "deleted": "A Primary Skill is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Primary Skill {{ id }}?"
+            },
+            "detail": {
+                "title": "Primary Skill"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name",
+            "skillCategory": "Skill Category"
+        }
+    }
+}

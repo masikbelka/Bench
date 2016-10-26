@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="benchApp.benchHistory.detail.title">Bench History</span> {{vm.benchHistory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.benchHistory.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{vm.benchHistory.createdTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchHistory.bench">Bench</span></dt>
+        <dd>
+            <span>{{vm.benchHistory.bench}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchHistory.managerId">Manager Id</span></dt>
+        <dd>
+            <span>{{vm.benchHistory.managerId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchHistory.validTo">Valid To</span></dt>
+        <dd>
+            <span>{{vm.benchHistory.validTo | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchHistory.employee">Employee</span></dt>
+        <dd>
+            <a ui-sref="employee-detail({id:vm.benchHistory.employee.id})">{{vm.benchHistory.employee.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="bench-history-detail.edit({id:vm.benchHistory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

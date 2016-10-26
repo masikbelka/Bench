@@ -1,0 +1,24 @@
+{
+    "benchApp": {
+        "jobFunction" : {
+            "home": {
+                "title": "Job Functions",
+                "createLabel": "Create a new Job Function",
+                "createOrEditLabel": "Create or edit a Job Function",
+                "search": "Search for Job Function"
+            },
+            "created": "A new Job Function is created with identifier {{ param }}",
+            "updated": "A Job Function is updated with identifier {{ param }}",
+            "deleted": "A Job Function is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Job Function {{ id }}?"
+            },
+            "detail": {
+                "title": "Job Function"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name",
+            "prefix": "Prefix"
+        }
+    }
+}

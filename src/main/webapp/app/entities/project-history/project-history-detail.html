@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="benchApp.projectHistory.detail.title">Project History</span> {{vm.projectHistory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.projectHistory.date">Date</span></dt>
+        <dd>
+            <span>{{vm.projectHistory.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.projectHistory.workload">Workload</span></dt>
+        <dd>
+            <span>{{vm.projectHistory.workload}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.projectHistory.employee">Employee</span></dt>
+        <dd>
+            <a ui-sref="employee-detail({id:vm.projectHistory.employee.id})">{{vm.projectHistory.employee.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.projectHistory.role">Role</span></dt>
+        <dd>
+            <a ui-sref="project-role-detail({id:vm.projectHistory.role.id})">{{vm.projectHistory.role.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.projectHistory.project">Project</span></dt>
+        <dd>
+            <a ui-sref="project-detail({id:vm.projectHistory.project.id})">{{vm.projectHistory.project.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="project-history-detail.edit({id:vm.projectHistory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

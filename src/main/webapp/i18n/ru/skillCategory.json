@@ -1,0 +1,24 @@
+{
+    "benchApp": {
+        "skillCategory" : {
+            "home": {
+                "title": "Skill Categories",
+                "createLabel": "Создать новый Skill Category",
+                "createOrEditLabel": "Создать или отредактировать Skill Category",
+                "search": "Найти Skill Category"
+            },
+            "created": "Новый Skill Category создан с идентификатором {{ param }}",
+            "updated": "Skill Category обновлен с идентификатором {{ param }}",
+            "deleted": "Skill Category удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Skill Category {{ id }}?"
+            },
+            "detail": {
+                "title": "Skill Category"
+            },
+            "name": "Name",
+            "color": "Color",
+            "children": "Children"
+        }
+    }
+}

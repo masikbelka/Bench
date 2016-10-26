@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="benchApp.title.detail.title">Title</span> {{vm.title.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.title.upsaId">Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.title.upsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.title.name">Name</span></dt>
+        <dd>
+            <span>{{vm.title.name}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="title-detail.edit({id:vm.title.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

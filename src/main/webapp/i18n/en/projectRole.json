@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "projectRole" : {
+            "home": {
+                "title": "Project Roles",
+                "createLabel": "Create a new Project Role",
+                "createOrEditLabel": "Create or edit a Project Role",
+                "search": "Search for Project Role"
+            },
+            "created": "A new Project Role is created with identifier {{ param }}",
+            "updated": "A Project Role is updated with identifier {{ param }}",
+            "deleted": "A Project Role is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Project Role {{ id }}?"
+            },
+            "detail": {
+                "title": "Project Role"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name"
+        }
+    }
+}

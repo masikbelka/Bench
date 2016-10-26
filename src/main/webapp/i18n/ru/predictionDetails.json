@@ -1,0 +1,27 @@
+{
+    "benchApp": {
+        "predictionDetails" : {
+            "home": {
+                "title": "Prediction Details",
+                "createLabel": "Создать новый Prediction Details",
+                "createOrEditLabel": "Создать или отредактировать Prediction Details",
+                "search": "Найти Prediction Details"
+            },
+            "created": "Новый Prediction Details создан с идентификатором {{ param }}",
+            "updated": "Prediction Details обновлен с идентификатором {{ param }}",
+            "deleted": "Prediction Details удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Prediction Details {{ id }}?"
+            },
+            "detail": {
+                "title": "Prediction Details"
+            },
+            "date": "Date",
+            "assignedToProject": "Assigned To Project",
+            "active": "Active",
+            "removedFromProject": "Removed From Project",
+            "maternityLeave": "Maternity Leave",
+            "project": "Project"
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "benchApp": {
+        "OpportunityStatus" : {
+            "null": "",
+            "CREATED": "CREATED",
+            "CLOSED": "CLOSED",
+            "ACTIVE": "ACTIVE",
+            "ON_HOLD": "ON_HOLD",
+            "CANCELLED": "CANCELLED",
+            "IN_PROGRESS": "IN_PROGRESS",
+            "APPROVED": "APPROVED",
+            "OPEN": "OPEN",
+            "DRAFT": "DRAFT",
+            "SUBMITTED": "SUBMITTED",
+            "REJECTED": "REJECTED"
+        }
+    }
+}

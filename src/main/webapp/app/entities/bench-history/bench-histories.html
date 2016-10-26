@@ -1,0 +1,83 @@
+<div>
+    <h2 data-translate="benchApp.benchHistory.home.title">Bench Histories</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="bench-history.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="benchApp.benchHistory.home.createLabel">
+                        Create new Bench History
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'benchApp.benchHistory.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdTime"><span data-translate="benchApp.benchHistory.createdTime">Created Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bench"><span data-translate="benchApp.benchHistory.bench">Bench</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="managerId"><span data-translate="benchApp.benchHistory.managerId">Manager Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="validTo"><span data-translate="benchApp.benchHistory.validTo">Valid To</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="employee.id"><span data-translate="benchApp.benchHistory.employee">Employee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="benchHistory in vm.benchHistories track by benchHistory.id">
+                    <td><a ui-sref="bench-history-detail({id:benchHistory.id})">{{benchHistory.id}}</a></td>
+                    <td>{{benchHistory.createdTime | date:'medium'}}</td>
+                    <td>{{benchHistory.bench}}</td>
+                    <td>{{benchHistory.managerId}}</td>
+                    <td>{{benchHistory.validTo | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="employee-detail({id:benchHistory.employee.id})">{{benchHistory.employee.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="bench-history-detail({id:benchHistory.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bench-history.edit({id:benchHistory.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bench-history.delete({id:benchHistory.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

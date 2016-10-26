@@ -1,0 +1,111 @@
+<div>
+    <h2 data-translate="benchApp.opportunity.home.title">Opportunities</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="opportunity.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="benchApp.opportunity.home.createLabel">
+                        Create new Opportunity
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'benchApp.opportunity.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="staffingId"><span data-translate="benchApp.opportunity.staffingId">Staffing Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="benchApp.opportunity.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ownerUpsaId"><span data-translate="benchApp.opportunity.ownerUpsaId">Owner Upsa Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ownerFullName"><span data-translate="benchApp.opportunity.ownerFullName">Owner Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDate"><span data-translate="benchApp.opportunity.startDate">Start Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endDate"><span data-translate="benchApp.opportunity.endDate">End Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span data-translate="benchApp.opportunity.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span data-translate="benchApp.opportunity.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="staffingCoordinatiorUpsaId"><span data-translate="benchApp.opportunity.staffingCoordinatiorUpsaId">Staffing Coordinatior Upsa Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="staffingCoordinatiorFullName"><span data-translate="benchApp.opportunity.staffingCoordinatiorFullName">Staffing Coordinatior Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="responsibleManagerUpsaId"><span data-translate="benchApp.opportunity.responsibleManagerUpsaId">Responsible Manager Upsa Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="responsibleManagerFullName"><span data-translate="benchApp.opportunity.responsibleManagerFullName">Responsible Manager Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="supervisorUpsaId"><span data-translate="benchApp.opportunity.supervisorUpsaId">Supervisor Upsa Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="supervisorFullName"><span data-translate="benchApp.opportunity.supervisorFullName">Supervisor Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryManagerUpsaId"><span data-translate="benchApp.opportunity.deliveryManagerUpsaId">Delivery Manager Upsa Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryManagerFullName"><span data-translate="benchApp.opportunity.deliveryManagerFullName">Delivery Manager Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accountManagerUpsaId"><span data-translate="benchApp.opportunity.accountManagerUpsaId">Account Manager Upsa Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accountManagerFullName"><span data-translate="benchApp.opportunity.accountManagerFullName">Account Manager Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type.id"><span data-translate="benchApp.opportunity.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="opportunity in vm.opportunities track by opportunity.id">
+                    <td><a ui-sref="opportunity-detail({id:opportunity.id})">{{opportunity.id}}</a></td>
+                    <td>{{opportunity.staffingId}}</td>
+                    <td>{{opportunity.name}}</td>
+                    <td>{{opportunity.ownerUpsaId}}</td>
+                    <td>{{opportunity.ownerFullName}}</td>
+                        <td>{{opportunity.startDate | date:'mediumDate'}}</td>
+                        <td>{{opportunity.endDate | date:'mediumDate'}}</td>
+                    <td data-translate="{{'benchApp.OpportunityStatus.' + opportunity.status}}">{{opportunity.status}}</td>
+                    <td>{{opportunity.description}}</td>
+                    <td>{{opportunity.staffingCoordinatiorUpsaId}}</td>
+                    <td>{{opportunity.staffingCoordinatiorFullName}}</td>
+                    <td>{{opportunity.responsibleManagerUpsaId}}</td>
+                    <td>{{opportunity.responsibleManagerFullName}}</td>
+                    <td>{{opportunity.supervisorUpsaId}}</td>
+                    <td>{{opportunity.supervisorFullName}}</td>
+                    <td>{{opportunity.deliveryManagerUpsaId}}</td>
+                    <td>{{opportunity.deliveryManagerFullName}}</td>
+                    <td>{{opportunity.accountManagerUpsaId}}</td>
+                    <td>{{opportunity.accountManagerFullName}}</td>
+                    <td>
+                        <a ui-sref="opportunity-type-detail({id:opportunity.type.id})">{{opportunity.type.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="opportunity-detail({id:opportunity.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="opportunity.edit({id:opportunity.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="opportunity.delete({id:opportunity.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

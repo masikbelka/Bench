@@ -1,0 +1,89 @@
+<div>
+    <h2 data-translate="benchApp.benchPredictions.home.title">Bench Predictions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="bench-predictions.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="benchApp.benchPredictions.home.createLabel">
+                        Create new Bench Predictions
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'benchApp.benchPredictions.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdTime"><span data-translate="benchApp.benchPredictions.createdTime">Created Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ignored"><span data-translate="benchApp.benchPredictions.ignored">Ignored</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ignoredDays"><span data-translate="benchApp.benchPredictions.ignoredDays">Ignored Days</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="readyToBench"><span data-translate="benchApp.benchPredictions.readyToBench">Ready To Bench</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="readyToProduction"><span data-translate="benchApp.benchPredictions.readyToProduction">Ready To Production</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="details.id"><span data-translate="benchApp.benchPredictions.details">Details</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="employee.id"><span data-translate="benchApp.benchPredictions.employee">Employee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="benchPredictions in vm.benchPredictions track by benchPredictions.id">
+                    <td><a ui-sref="bench-predictions-detail({id:benchPredictions.id})">{{benchPredictions.id}}</a></td>
+                    <td>{{benchPredictions.createdTime | date:'medium'}}</td>
+                    <td>{{benchPredictions.ignored}}</td>
+                    <td>{{benchPredictions.ignoredDays}}</td>
+                    <td>{{benchPredictions.readyToBench}}</td>
+                    <td>{{benchPredictions.readyToProduction}}</td>
+                    <td>
+                        <a ui-sref="prediction-details-detail({id:benchPredictions.details.id})">{{benchPredictions.details.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="employee-detail({id:benchPredictions.employee.id})">{{benchPredictions.employee.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="bench-predictions-detail({id:benchPredictions.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bench-predictions.edit({id:benchPredictions.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bench-predictions.delete({id:benchPredictions.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

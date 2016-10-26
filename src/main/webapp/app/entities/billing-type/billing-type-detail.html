@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="benchApp.billingType.detail.title">Billing Type</span> {{vm.billingType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.billingType.upsaId">Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.billingType.upsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.billingType.name">Name</span></dt>
+        <dd>
+            <span>{{vm.billingType.name}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="billing-type-detail.edit({id:vm.billingType.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

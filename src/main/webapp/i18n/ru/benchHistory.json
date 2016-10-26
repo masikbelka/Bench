@@ -1,0 +1,26 @@
+{
+    "benchApp": {
+        "benchHistory" : {
+            "home": {
+                "title": "Bench Histories",
+                "createLabel": "Создать новый Bench History",
+                "createOrEditLabel": "Создать или отредактировать Bench History",
+                "search": "Найти Bench History"
+            },
+            "created": "Новый Bench History создан с идентификатором {{ param }}",
+            "updated": "Bench History обновлен с идентификатором {{ param }}",
+            "deleted": "Bench History удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Bench History {{ id }}?"
+            },
+            "detail": {
+                "title": "Bench History"
+            },
+            "createdTime": "Created Time",
+            "bench": "Bench",
+            "managerId": "Manager Id",
+            "validTo": "Valid To",
+            "employee": "Employee"
+        }
+    }
+}

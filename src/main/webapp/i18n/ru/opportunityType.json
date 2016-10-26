@@ -1,0 +1,22 @@
+{
+    "benchApp": {
+        "opportunityType" : {
+            "home": {
+                "title": "Opportunity Types",
+                "createLabel": "Создать новый Opportunity Type",
+                "createOrEditLabel": "Создать или отредактировать Opportunity Type",
+                "search": "Найти Opportunity Type"
+            },
+            "created": "Новый Opportunity Type создан с идентификатором {{ param }}",
+            "updated": "Opportunity Type обновлен с идентификатором {{ param }}",
+            "deleted": "Opportunity Type удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Opportunity Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Opportunity Type"
+            },
+            "name": "Name"
+        }
+    }
+}

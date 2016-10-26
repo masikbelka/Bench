@@ -1,0 +1,100 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBenchPredictionsLabel" data-translate="benchApp.benchPredictions.home.createOrEditLabel">Create or edit a Bench Predictions</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.benchPredictions.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.benchPredictions.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.benchPredictions.createdTime" for="field_createdTime">Created Time</label>
+                <div class="input-group">
+                    <input id="field_createdTime" type="text" class="form-control" name="createdTime" datetime-picker="{{dateformat}}" ng-model="vm.benchPredictions.createdTime" is-open="vm.datePickerOpenStatus.createdTime"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.createdTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.createdTime.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.createdTime.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.benchPredictions.ignored" for="field_ignored">Ignored</label>
+            <input type="checkbox" class="form-control" name="ignored" id="field_ignored"
+                    ng-model="vm.benchPredictions.ignored"
+                     />
+            <div ng-show="editForm.ignored.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ignored.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.benchPredictions.ignoredDays" for="field_ignoredDays">Ignored Days</label>
+            <input type="checkbox" class="form-control" name="ignoredDays" id="field_ignoredDays"
+                    ng-model="vm.benchPredictions.ignoredDays"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.benchPredictions.readyToBench" for="field_readyToBench">Ready To Bench</label>
+            <input type="checkbox" class="form-control" name="readyToBench" id="field_readyToBench"
+                    ng-model="vm.benchPredictions.readyToBench"
+                     />
+            <div ng-show="editForm.readyToBench.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.readyToBench.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="benchApp.benchPredictions.readyToProduction" for="field_readyToProduction">Ready To Production</label>
+            <input type="checkbox" class="form-control" name="readyToProduction" id="field_readyToProduction"
+                    ng-model="vm.benchPredictions.readyToProduction"
+                     />
+            <div ng-show="editForm.readyToProduction.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.readyToProduction.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="benchApp.benchPredictions.details" for="field_details">Details</label>
+            <select class="form-control" id="field_details" name="details" ng-model="vm.benchPredictions.details" ng-options="predictionDetails as predictionDetails.id for predictionDetails in vm.details | orderBy:'id' track by predictionDetails.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="benchApp.benchPredictions.employee" for="field_employee">Employee</label>
+            <select class="form-control" id="field_employee" name="employee" ng-model="vm.benchPredictions.employee" ng-options="employee as employee.id for employee in vm.employees track by employee.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

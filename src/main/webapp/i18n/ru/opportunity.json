@@ -1,0 +1,42 @@
+{
+    "benchApp": {
+        "opportunity" : {
+            "home": {
+                "title": "Opportunities",
+                "createLabel": "Создать новый Opportunity",
+                "createOrEditLabel": "Создать или отредактировать Opportunity",
+                "search": "Найти Opportunity"
+            },
+            "created": "Новый Opportunity создан с идентификатором {{ param }}",
+            "updated": "Opportunity обновлен с идентификатором {{ param }}",
+            "deleted": "Opportunity удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Opportunity {{ id }}?"
+            },
+            "detail": {
+                "title": "Opportunity"
+            },
+            "staffingId": "Staffing Id",
+            "name": "Name",
+            "ownerUpsaId": "Owner Upsa Id",
+            "ownerFullName": "Owner Full Name",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "status": "Status",
+            "description": "Description",
+            "staffingCoordinatiorUpsaId": "Staffing Coordinatior Upsa Id",
+            "staffingCoordinatiorFullName": "Staffing Coordinatior Full Name",
+            "responsibleManagerUpsaId": "Responsible Manager Upsa Id",
+            "responsibleManagerFullName": "Responsible Manager Full Name",
+            "supervisorUpsaId": "Supervisor Upsa Id",
+            "supervisorFullName": "Supervisor Full Name",
+            "deliveryManagerUpsaId": "Delivery Manager Upsa Id",
+            "deliveryManagerFullName": "Delivery Manager Full Name",
+            "accountManagerUpsaId": "Account Manager Upsa Id",
+            "accountManagerFullName": "Account Manager Full Name",
+            "type": "Type",
+            "assignedPositions": "Assigned Positions",
+            "location": "Location"
+        }
+    }
+}

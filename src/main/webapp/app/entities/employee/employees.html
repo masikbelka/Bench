@@ -1,0 +1,123 @@
+<div>
+    <h2 data-translate="benchApp.employee.home.title">Employees</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="employee.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="benchApp.employee.home.createLabel">
+                        Create new Employee
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'benchApp.employee.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="upsaId"><span data-translate="benchApp.employee.upsaId">Upsa Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span data-translate="benchApp.employee.email">Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fullName"><span data-translate="benchApp.employee.fullName">Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="comment"><span data-translate="benchApp.employee.comment">Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="managerFullName"><span data-translate="benchApp.employee.managerFullName">Manager Full Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="managerId"><span data-translate="benchApp.employee.managerId">Manager Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="active"><span data-translate="benchApp.employee.active">Active</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="hireDate"><span data-translate="benchApp.employee.hireDate">Hire Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="availableFrom"><span data-translate="benchApp.employee.availableFrom">Available From</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gender"><span data-translate="benchApp.employee.gender">Gender</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="probation.id"><span data-translate="benchApp.employee.probation">Probation</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="location.id"><span data-translate="benchApp.employee.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="primarySkill.id"><span data-translate="benchApp.employee.primarySkill">Primary Skill</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="title.id"><span data-translate="benchApp.employee.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="englishLevel.id"><span data-translate="benchApp.employee.englishLevel">English Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="productionStatus.id"><span data-translate="benchApp.employee.productionStatus">Production Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="jobFunction.id"><span data-translate="benchApp.employee.jobFunction">Job Function</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="unit.id"><span data-translate="benchApp.employee.unit">Unit</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="employee in vm.employees track by employee.id">
+                    <td><a ui-sref="employee-detail({id:employee.id})">{{employee.id}}</a></td>
+                    <td>{{employee.upsaId}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.fullName}}</td>
+                    <td>{{employee.comment}}</td>
+                    <td>{{employee.managerFullName}}</td>
+                    <td>{{employee.managerId}}</td>
+                    <td>{{employee.active}}</td>
+                    <td>{{employee.hireDate | date:'medium'}}</td>
+                    <td>{{employee.availableFrom | date:'medium'}}</td>
+                    <td data-translate="{{'benchApp.Gender.' + employee.gender}}">{{employee.gender}}</td>
+                    <td>
+                        <a ui-sref="probation-status-detail({id:employee.probation.id})">{{employee.probation.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="location-detail({id:employee.location.id})">{{employee.location.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="primary-skill-detail({id:employee.primarySkill.id})">{{employee.primarySkill.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="title-detail({id:employee.title.id})">{{employee.title.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="language-level-detail({id:employee.englishLevel.id})">{{employee.englishLevel.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="production-status-detail({id:employee.productionStatus.id})">{{employee.productionStatus.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="job-function-detail({id:employee.jobFunction.id})">{{employee.jobFunction.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="unit-detail({id:employee.unit.id})">{{employee.unit.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="employee-detail({id:employee.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="employee.edit({id:employee.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="employee.delete({id:employee.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="benchApp.predictionDetails.detail.title">Prediction Details</span> {{vm.predictionDetails.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.predictionDetails.date">Date</span></dt>
+        <dd>
+            <span>{{vm.predictionDetails.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.predictionDetails.assignedToProject">Assigned To Project</span></dt>
+        <dd>
+            <span>{{vm.predictionDetails.assignedToProject}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.predictionDetails.active">Active</span></dt>
+        <dd>
+            <span>{{vm.predictionDetails.active}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.predictionDetails.removedFromProject">Removed From Project</span></dt>
+        <dd>
+            <span>{{vm.predictionDetails.removedFromProject}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.predictionDetails.maternityLeave">Maternity Leave</span></dt>
+        <dd>
+            <span>{{vm.predictionDetails.maternityLeave}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.predictionDetails.project">Project</span></dt>
+        <dd>
+            <a ui-sref="project-detail({id:vm.predictionDetails.project.id})">{{vm.predictionDetails.project.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="prediction-details-detail.edit({id:vm.predictionDetails.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

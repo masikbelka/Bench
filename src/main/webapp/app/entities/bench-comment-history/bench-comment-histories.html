@@ -1,0 +1,85 @@
+<div>
+    <h2 data-translate="benchApp.benchCommentHistory.home.title">Bench Comment Histories</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="bench-comment-history.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  data-translate="benchApp.benchCommentHistory.home.createLabel">
+                        Create new Bench Comment History
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'benchApp.benchCommentHistory.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="changeTime"><span data-translate="benchApp.benchCommentHistory.changeTime">Change Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="oldValue"><span data-translate="benchApp.benchCommentHistory.oldValue">Old Value</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="newValue"><span data-translate="benchApp.benchCommentHistory.newValue">New Value</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id"><span data-translate="benchApp.benchCommentHistory.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="employee.id"><span data-translate="benchApp.benchCommentHistory.employee">Employee</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="benchCommentHistory in vm.benchCommentHistories track by benchCommentHistory.id">
+                    <td><a ui-sref="bench-comment-history-detail({id:benchCommentHistory.id})">{{benchCommentHistory.id}}</a></td>
+                    <td>{{benchCommentHistory.changeTime | date:'medium'}}</td>
+                    <td>{{benchCommentHistory.oldValue}}</td>
+                    <td>{{benchCommentHistory.newValue}}</td>
+                    <td>
+                        {{benchCommentHistory.user.id}}
+                    </td>
+                    <td>
+                        <a ui-sref="employee-detail({id:benchCommentHistory.employee.id})">{{benchCommentHistory.employee.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="bench-comment-history-detail({id:benchCommentHistory.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bench-comment-history.edit({id:benchCommentHistory.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="bench-comment-history.delete({id:benchCommentHistory.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

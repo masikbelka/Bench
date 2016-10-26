@@ -1,0 +1,28 @@
+{
+    "benchApp": {
+        "project" : {
+            "home": {
+                "title": "Projects",
+                "createLabel": "Создать новый Project",
+                "createOrEditLabel": "Создать или отредактировать Project",
+                "search": "Найти Project"
+            },
+            "created": "Новый Project создан с идентификатором {{ param }}",
+            "updated": "Project обновлен с идентификатором {{ param }}",
+            "deleted": "Project удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Project {{ id }}?"
+            },
+            "detail": {
+                "title": "Project"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "billingConcept": "Billing Concept",
+            "billingType": "Billing Type",
+            "category": "Category"
+        }
+    }
+}

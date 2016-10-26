@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="benchApp.unit.detail.title">Unit</span> {{vm.unit.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.unit.upsaId">Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.unit.upsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.unit.name">Name</span></dt>
+        <dd>
+            <span>{{vm.unit.name}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.unit.owner">Owner</span></dt>
+        <dd>
+            <a ui-sref="employee-detail({id:vm.unit.owner.id})">{{vm.unit.owner.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.unit.location">Location</span></dt>
+        <dd>
+            <a ui-sref="location-detail({id:vm.unit.location.id})">{{vm.unit.location.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.unit.skill">Skill</span></dt>
+        <dd>
+            <a ui-sref="primary-skill-detail({id:vm.unit.skill.id})">{{vm.unit.skill.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.unit.parent">Parent</span></dt>
+        <dd>
+            <a ui-sref="unit-detail({id:vm.unit.parent.id})">{{vm.unit.parent.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="unit-detail.edit({id:vm.unit.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

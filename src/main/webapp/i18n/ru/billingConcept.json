@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "billingConcept" : {
+            "home": {
+                "title": "Billing Concepts",
+                "createLabel": "Создать новый Billing Concept",
+                "createOrEditLabel": "Создать или отредактировать Billing Concept",
+                "search": "Найти Billing Concept"
+            },
+            "created": "Новый Billing Concept создан с идентификатором {{ param }}",
+            "updated": "Billing Concept обновлен с идентификатором {{ param }}",
+            "deleted": "Billing Concept удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Billing Concept {{ id }}?"
+            },
+            "detail": {
+                "title": "Billing Concept"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "billingType" : {
+            "home": {
+                "title": "Billing Types",
+                "createLabel": "Create a new Billing Type",
+                "createOrEditLabel": "Create or edit a Billing Type",
+                "search": "Search for Billing Type"
+            },
+            "created": "A new Billing Type is created with identifier {{ param }}",
+            "updated": "A Billing Type is updated with identifier {{ param }}",
+            "deleted": "A Billing Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Billing Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Billing Type"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name"
+        }
+    }
+}

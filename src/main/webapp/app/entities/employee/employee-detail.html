@@ -1,0 +1,91 @@
+
+<div>
+    <h2><span data-translate="benchApp.employee.detail.title">Employee</span> {{vm.employee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.employee.upsaId">Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.employee.upsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.email">Email</span></dt>
+        <dd>
+            <span>{{vm.employee.email}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.fullName">Full Name</span></dt>
+        <dd>
+            <span>{{vm.employee.fullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.comment">Comment</span></dt>
+        <dd>
+            <span>{{vm.employee.comment}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.managerFullName">Manager Full Name</span></dt>
+        <dd>
+            <span>{{vm.employee.managerFullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.managerId">Manager Id</span></dt>
+        <dd>
+            <span>{{vm.employee.managerId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.active">Active</span></dt>
+        <dd>
+            <span>{{vm.employee.active}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.hireDate">Hire Date</span></dt>
+        <dd>
+            <span>{{vm.employee.hireDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.availableFrom">Available From</span></dt>
+        <dd>
+            <span>{{vm.employee.availableFrom | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.gender">Gender</span></dt>
+        <dd>
+            <span data-translate="{{'benchApp.Gender.' + vm.employee.gender}}">{{vm.employee.gender}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.employee.probation">Probation</span></dt>
+        <dd>
+            <a ui-sref="probation-status-detail({id:vm.employee.probation.id})">{{vm.employee.probation.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.employee.location">Location</span></dt>
+        <dd>
+            <a ui-sref="location-detail({id:vm.employee.location.id})">{{vm.employee.location.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.employee.primarySkill">Primary Skill</span></dt>
+        <dd>
+            <a ui-sref="primary-skill-detail({id:vm.employee.primarySkill.id})">{{vm.employee.primarySkill.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.employee.title">Title</span></dt>
+        <dd>
+            <a ui-sref="title-detail({id:vm.employee.title.id})">{{vm.employee.title.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.employee.englishLevel">English Level</span></dt>
+        <dd>
+            <a ui-sref="language-level-detail({id:vm.employee.englishLevel.id})">{{vm.employee.englishLevel.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.employee.productionStatus">Production Status</span></dt>
+        <dd>
+            <a ui-sref="production-status-detail({id:vm.employee.productionStatus.id})">{{vm.employee.productionStatus.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.employee.jobFunction">Job Function</span></dt>
+        <dd>
+            <a ui-sref="job-function-detail({id:vm.employee.jobFunction.id})">{{vm.employee.jobFunction.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.employee.unit">Unit</span></dt>
+        <dd>
+            <a ui-sref="unit-detail({id:vm.employee.unit.id})">{{vm.employee.unit.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="employee-detail.edit({id:vm.employee.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

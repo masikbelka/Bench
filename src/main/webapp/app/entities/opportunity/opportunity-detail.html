@@ -1,0 +1,95 @@
+
+<div>
+    <h2><span data-translate="benchApp.opportunity.detail.title">Opportunity</span> {{vm.opportunity.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.opportunity.staffingId">Staffing Id</span></dt>
+        <dd>
+            <span>{{vm.opportunity.staffingId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.name">Name</span></dt>
+        <dd>
+            <span>{{vm.opportunity.name}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.ownerUpsaId">Owner Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.opportunity.ownerUpsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.ownerFullName">Owner Full Name</span></dt>
+        <dd>
+            <span>{{vm.opportunity.ownerFullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{vm.opportunity.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.endDate">End Date</span></dt>
+        <dd>
+            <span>{{vm.opportunity.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.status">Status</span></dt>
+        <dd>
+            <span data-translate="{{'benchApp.OpportunityStatus.' + vm.opportunity.status}}">{{vm.opportunity.status}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.description">Description</span></dt>
+        <dd>
+            <span>{{vm.opportunity.description}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.staffingCoordinatiorUpsaId">Staffing Coordinatior Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.opportunity.staffingCoordinatiorUpsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.staffingCoordinatiorFullName">Staffing Coordinatior Full Name</span></dt>
+        <dd>
+            <span>{{vm.opportunity.staffingCoordinatiorFullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.responsibleManagerUpsaId">Responsible Manager Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.opportunity.responsibleManagerUpsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.responsibleManagerFullName">Responsible Manager Full Name</span></dt>
+        <dd>
+            <span>{{vm.opportunity.responsibleManagerFullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.supervisorUpsaId">Supervisor Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.opportunity.supervisorUpsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.supervisorFullName">Supervisor Full Name</span></dt>
+        <dd>
+            <span>{{vm.opportunity.supervisorFullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.deliveryManagerUpsaId">Delivery Manager Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.opportunity.deliveryManagerUpsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.deliveryManagerFullName">Delivery Manager Full Name</span></dt>
+        <dd>
+            <span>{{vm.opportunity.deliveryManagerFullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.accountManagerUpsaId">Account Manager Upsa Id</span></dt>
+        <dd>
+            <span>{{vm.opportunity.accountManagerUpsaId}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.accountManagerFullName">Account Manager Full Name</span></dt>
+        <dd>
+            <span>{{vm.opportunity.accountManagerFullName}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.opportunity.type">Type</span></dt>
+        <dd>
+            <a ui-sref="opportunity-type-detail({id:vm.opportunity.type.id})">{{vm.opportunity.type.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="opportunity-detail.edit({id:vm.opportunity.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

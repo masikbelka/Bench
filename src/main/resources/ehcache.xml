@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         name="CM1"
+         updateCheck="false"
+         maxBytesLocalHeap="16M">
+
+    <!--
+      This is a default configuration, it is re-configured by the CacheConfiguration Spring Bean, using the
+      properties from the resources/config/*.yml files.
+    -->
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            eternal="false"
+            overflowToDisk="false"
+            />
+
+    <cache name="com.epam.bench.domain.User"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Authority"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.User.authorities"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.PersistentToken"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.User.persistentTokens"
+           timeToLiveSeconds="3600">
+    </cache>
+    
+    <cache name="com.epam.bench.domain.BenchHistory"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.BenchCommentHistory"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.BenchPredictions"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.PredictionDetails"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Location"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Title"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.JobFunction"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.BillingConcept"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.OpportunityType"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.ProjectCategory"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.BillingType"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.ProductionStatus"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.LanguageLevel"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.ProbationStatus"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.PrimarySkill"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Unit"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Unit.children"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Employee"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Employee.benchHistories"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Employee.projectsWorkloads"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Employee.predictions"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Employee.opportunityPositions"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Project"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.ProjectRole"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.SkillCategory"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.SkillCategory.children"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Opportunity"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Opportunity.assignedPositions"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.Opportunity.locations"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.OpportunityPosition"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epam.bench.domain.ProjectHistory"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <!-- jhipster-needle-ehcache-add-entry -->
+</ehcache>

@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "title" : {
+            "home": {
+                "title": "Titles",
+                "createLabel": "Create a new Title",
+                "createOrEditLabel": "Create or edit a Title",
+                "search": "Search for Title"
+            },
+            "created": "A new Title is created with identifier {{ param }}",
+            "updated": "A Title is updated with identifier {{ param }}",
+            "deleted": "A Title is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Title {{ id }}?"
+            },
+            "detail": {
+                "title": "Title"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name"
+        }
+    }
+}

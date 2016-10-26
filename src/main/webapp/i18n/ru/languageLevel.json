@@ -1,0 +1,24 @@
+{
+    "benchApp": {
+        "languageLevel" : {
+            "home": {
+                "title": "Language Levels",
+                "createLabel": "Создать новый Language Level",
+                "createOrEditLabel": "Создать или отредактировать Language Level",
+                "search": "Найти Language Level"
+            },
+            "created": "Новый Language Level создан с идентификатором {{ param }}",
+            "updated": "Language Level обновлен с идентификатором {{ param }}",
+            "deleted": "Language Level удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Language Level {{ id }}?"
+            },
+            "detail": {
+                "title": "Language Level"
+            },
+            "language": "Language",
+            "speaking": "Speaking",
+            "writing": "Writing"
+        }
+    }
+}

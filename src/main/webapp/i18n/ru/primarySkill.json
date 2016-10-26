@@ -1,0 +1,24 @@
+{
+    "benchApp": {
+        "primarySkill" : {
+            "home": {
+                "title": "Primary Skills",
+                "createLabel": "Создать новый Primary Skill",
+                "createOrEditLabel": "Создать или отредактировать Primary Skill",
+                "search": "Найти Primary Skill"
+            },
+            "created": "Новый Primary Skill создан с идентификатором {{ param }}",
+            "updated": "Primary Skill обновлен с идентификатором {{ param }}",
+            "deleted": "Primary Skill удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Primary Skill {{ id }}?"
+            },
+            "detail": {
+                "title": "Primary Skill"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name",
+            "skillCategory": "Skill Category"
+        }
+    }
+}

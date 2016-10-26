@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "probationStatus" : {
+            "home": {
+                "title": "Probation Statuses",
+                "createLabel": "Create a new Probation Status",
+                "createOrEditLabel": "Create or edit a Probation Status",
+                "search": "Search for Probation Status"
+            },
+            "created": "A new Probation Status is created with identifier {{ param }}",
+            "updated": "A Probation Status is updated with identifier {{ param }}",
+            "deleted": "A Probation Status is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Probation Status {{ id }}?"
+            },
+            "detail": {
+                "title": "Probation Status"
+            },
+            "endDate": "End Date",
+            "status": "Status"
+        }
+    }
+}

@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="benchApp.benchPredictions.detail.title">Bench Predictions</span> {{vm.benchPredictions.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="benchApp.benchPredictions.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{vm.benchPredictions.createdTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchPredictions.ignored">Ignored</span></dt>
+        <dd>
+            <span>{{vm.benchPredictions.ignored}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchPredictions.ignoredDays">Ignored Days</span></dt>
+        <dd>
+            <span>{{vm.benchPredictions.ignoredDays}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchPredictions.readyToBench">Ready To Bench</span></dt>
+        <dd>
+            <span>{{vm.benchPredictions.readyToBench}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchPredictions.readyToProduction">Ready To Production</span></dt>
+        <dd>
+            <span>{{vm.benchPredictions.readyToProduction}}</span>
+        </dd>
+        <dt><span data-translate="benchApp.benchPredictions.details">Details</span></dt>
+        <dd>
+            <a ui-sref="prediction-details-detail({id:vm.benchPredictions.details.id})">{{vm.benchPredictions.details.id}}</a>
+        </dd>
+        <dt><span data-translate="benchApp.benchPredictions.employee">Employee</span></dt>
+        <dd>
+            <a ui-sref="employee-detail({id:vm.benchPredictions.employee.id})">{{vm.benchPredictions.employee.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="bench-predictions-detail.edit({id:vm.benchPredictions.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

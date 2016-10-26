@@ -1,0 +1,23 @@
+{
+    "benchApp": {
+        "projectCategory" : {
+            "home": {
+                "title": "Project Categories",
+                "createLabel": "Создать новый Project Category",
+                "createOrEditLabel": "Создать или отредактировать Project Category",
+                "search": "Найти Project Category"
+            },
+            "created": "Новый Project Category создан с идентификатором {{ param }}",
+            "updated": "Project Category обновлен с идентификатором {{ param }}",
+            "deleted": "Project Category удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Project Category {{ id }}?"
+            },
+            "detail": {
+                "title": "Project Category"
+            },
+            "upsaId": "Upsa Id",
+            "name": "Name"
+        }
+    }
+}
