@@ -61,15 +61,15 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: bench@localhost
+        from: Tetiana_Antonenko1@epam.com
     swagger:
         title: bench API
         description: bench API documentation
         version: 0.0.1
         termsOfServiceUrl:
-        contactName:
+        contactName: Tetiana Antonenko
         contactUrl:
-        contactEmail:
+        contactEmail: Tetiana_Antonenko1@epam.com
         license:
         licenseUrl:
     ribbon:
