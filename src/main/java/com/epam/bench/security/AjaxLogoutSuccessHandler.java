@@ -3,7 +3,7 @@ package com.epam.bench.security;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ public class AjaxLogoutSuccessHandler extends AbstractAuthenticationTargetUrlReq
     public static final String BEARER_AUTHENTICATION = "Bearer ";
 
     @Inject
-    private TokenStore tokenStore;
+    private JdbcTokenStore tokenStore;
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,

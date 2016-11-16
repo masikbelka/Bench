@@ -1,8 +1,8 @@
 package com.epam.bench.config;
 
-import com.epam.bench.security.AjaxLogoutSuccessHandler;
-import com.epam.bench.security.AuthoritiesConstants;
-import com.epam.bench.security.Http401UnauthorizedEntryPoint;
+import javax.inject.Inject;
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,11 +22,11 @@ import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
-import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
-import javax.inject.Inject;
-import javax.sql.DataSource;
+import com.epam.bench.security.AjaxLogoutSuccessHandler;
+import com.epam.bench.security.AuthoritiesConstants;
+import com.epam.bench.security.Http401UnauthorizedEntryPoint;
 
 @Configuration
 public class OAuth2ServerConfiguration {
@@ -35,7 +35,7 @@ public class OAuth2ServerConfiguration {
     private DataSource dataSource;
 
     @Bean
-    public TokenStore tokenStore() {
+    public JdbcTokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
     }
 
@@ -44,7 +44,7 @@ public class OAuth2ServerConfiguration {
     protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
         @Inject
-        private TokenStore tokenStore;
+        private JdbcTokenStore tokenStore;
 
         @Inject
         private Http401UnauthorizedEntryPoint authenticationEntryPoint;
@@ -96,7 +96,7 @@ public class OAuth2ServerConfiguration {
         private DataSource dataSource;
 
         @Inject
-        private TokenStore tokenStore;
+        private JdbcTokenStore tokenStore;
 
         @Bean
         protected AuthorizationCodeServices authorizationCodeServices() {
