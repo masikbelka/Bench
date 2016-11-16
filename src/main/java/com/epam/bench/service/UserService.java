@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +35,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     @Inject
-    public JdbcTokenStore jdbcTokenStore;
+    private JdbcTokenStore tokenStore;
 
     @Inject
     private UserRepository userRepository;
@@ -176,8 +177,8 @@ public class UserService {
     }
 
     public void deleteUser(String login) {
-        jdbcTokenStore.findTokensByUserName(login).stream().forEach(token ->
-            jdbcTokenStore.removeAccessToken(token));
+        tokenStore.findTokensByUserName(login).stream().forEach(token ->
+            tokenStore.removeAccessToken(token));
         userRepository.findOneByLogin(login).ifPresent(u -> {
             userRepository.delete(u);
             userSearchRepository.delete(u);
