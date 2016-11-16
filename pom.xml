@@ -25,6 +25,7 @@
         <awaitility.version>1.7.0</awaitility.version>
         <commons-io.version>2.5</commons-io.version>
         <commons-lang.version>3.4</commons-lang.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
         <cucumber.version>1.2.4</cucumber.version>
         <frontend-maven-plugin.version>1.0</frontend-maven-plugin.version>
         <hibernate.version>4.3.11.Final</hibernate.version>
@@ -400,6 +401,12 @@
             <scope>test</scope>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons-collections.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
@@ -778,7 +785,8 @@
                 <!-- log configuration -->
                 <logback.loglevel>DEBUG</logback.loglevel>
                 <!-- default Spring profiles -->
-                <spring.profiles.active>dev${profile.no-liquibase}</spring.profiles.active>
+                <!--<spring.profiles.active>dev${profile.no-liquibase}</spring.profiles.active>-->
+                <spring.profiles.active>dev,swagger</spring.profiles.active>
             </properties>
         </profile>
         <profile>

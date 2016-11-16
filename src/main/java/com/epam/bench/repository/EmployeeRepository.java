@@ -12,4 +12,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
+    Employee findByUpsaId(final String upsaId);
 }

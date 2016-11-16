@@ -21,12 +21,19 @@ public interface EmployeeService {
 
     /**
      *  Get all the employees.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<Employee> findAll(Pageable pageable);
 
+    /**
+     *  Get employee by upsa id.
+     *
+     *  @param upsaId the employee id in upsa
+     *  @return employee or null
+     */
+    Employee findByUpsaId(final String upsaId);
     /**
      *  Get the "id" employee.
      *
@@ -46,7 +53,7 @@ public interface EmployeeService {
      * Search for the employee corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */

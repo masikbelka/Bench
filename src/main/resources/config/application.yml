@@ -63,9 +63,9 @@ jhipster:
     mail:
         from: Tetiana_Antonenko1@epam.com
     swagger:
-        title: bench API
-        description: bench API documentation
-        version: 0.0.1
+        title: Bench API
+        description: Bench API documentation
+        version: 1.0.0
         termsOfServiceUrl:
         contactName: Tetiana Antonenko
         contactUrl:

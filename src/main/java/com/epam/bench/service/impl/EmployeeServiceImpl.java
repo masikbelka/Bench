@@ -26,7 +26,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class EmployeeServiceImpl implements EmployeeService{
 
     private final Logger log = LoggerFactory.getLogger(EmployeeServiceImpl.class);
-    
+
     @Inject
     private EmployeeRepository employeeRepository;
 
@@ -48,15 +48,27 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     /**
      *  Get all the employees.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<Employee> findAll(Pageable pageable) {
         log.debug("Request to get all Employees");
         Page<Employee> result = employeeRepository.findAll(pageable);
         return result;
+    }
+
+    /**
+     *  Get employee by upsa id.
+     *
+     *  @param upsaId the employee id in upsa
+     *  @return employee or null
+     */
+    @Transactional(readOnly = true)
+    public Employee findByUpsaId(final String upsaId) {
+        log.debug("Request to get Employee by upsaId {}", upsaId);
+        return employeeRepository.findByUpsaId(upsaId);
     }
 
     /**
@@ -65,7 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService{
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Employee findOne(Long id) {
         log.debug("Request to get Employee : {}", id);
         Employee employee = employeeRepository.findOne(id);

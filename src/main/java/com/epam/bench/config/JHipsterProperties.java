@@ -219,19 +219,19 @@ public class JHipsterProperties {
 
     public static class Swagger {
 
-        private String title = "bench API";
+        private String title = "Bench API";
 
-        private String description = "bench API documentation";
+        private String description = "Bench API documentation";
 
-        private String version = "0.0.1";
+        private String version = "1.0.0";
 
         private String termsOfServiceUrl;
 
-        private String contactName;
+        private String contactName = "Tetiana Antonenko";
 
         private String contactUrl;
 
-        private String contactEmail;
+        private String contactEmail = "Tetiana_Antonenko1@epam.com";
 
         private String license;
 
