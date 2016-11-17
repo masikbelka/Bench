@@ -47,6 +47,12 @@ spring:
         port: 587
         username: epam.bench@gmail.com
         password: nimda123456
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
     thymeleaf:
         cache: true
 
@@ -90,7 +96,7 @@ jhipster:
             reportFrequency: 60 # in seconds
     logging:
         logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
-            enabled: false
+            enabled: true
             host: localhost
             port: 5000
             queueSize: 512

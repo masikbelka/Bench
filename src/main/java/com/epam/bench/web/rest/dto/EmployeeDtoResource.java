@@ -1,5 +1,7 @@
 package com.epam.bench.web.rest.dto;
 
+import io.swagger.annotations.Api;
+
 import com.codahale.metrics.annotation.Timed;
 import com.epam.bench.facades.EmployeeFacade;
 import com.epam.bench.service.dto.bench.CommentHistoryDto;
@@ -32,6 +34,7 @@ import java.util.Optional;
 /**
  * REST controller for managing Employee.
  */
+@Api(value = "EmployeeDto", description = "")
 @RestController
 @RequestMapping("/api/bench")
 public class EmployeeDtoResource {
