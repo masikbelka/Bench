@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 import com.epam.bench.service.dto.bench.LanguageLevelDto;
 
 /**
- * Created by Tetiana_Mokhnenko.
+ * Created by Tetiana_Antonenko.
  */
 public class UpdateEmployeeFormDto {
 

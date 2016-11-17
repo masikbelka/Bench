@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Tetiana_Mokhnenko.
+ * Created by Tetiana_Antonenko.
  */
 public class EmployeeDto {
 

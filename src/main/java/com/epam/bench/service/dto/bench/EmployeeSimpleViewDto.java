@@ -1,7 +1,7 @@
 package com.epam.bench.service.dto.bench;
 
 /**
- * Created by Tetiana_Mokhnenko.
+ * Created by Tetiana_Antonenko.
  */
 public class EmployeeSimpleViewDto {
 

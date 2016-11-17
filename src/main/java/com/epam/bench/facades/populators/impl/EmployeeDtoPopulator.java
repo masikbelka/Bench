@@ -18,7 +18,7 @@ import com.epam.bench.service.dto.bench.ProposedPositionsDto;
 import com.epam.bench.service.util.ServiceUtil;
 
 /**
- * Created by Tetiana_Mokhnenko.
+ * Created by Tetiana_Antonenko.
  */
 @Component
 public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
@@ -34,12 +34,10 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
         populateLanguage(employee, employeeDto);
 
         employeeDto.setAvailableFrom(dateOrDefault(employee.getAvailableFrom()));
+        employeeDto.setAvailableTill(dateOrDefault(employee.getAvailableFrom()));
 
-        PrimarySkill skill = employee.getPrimarySkill();
-        if (Objects.nonNull(skill)) {
-            employeeDto.setSkill(StringUtils.defaultString(skill.getName()));
-            employeeDto.setSkillId(StringUtils.defaultString(skill.getUpsaId()));
-        }
+        populateSkill(employee, employeeDto);
+
         employeeDto.setComment(StringUtils.defaultString(employee.getComment()));
 
         populateProposalPositions(employee, employeeDto);
@@ -49,6 +47,14 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
         List<ProposedPositionsDto> proposedPositions = employeeDto.getProposedPositions();
         if (CollectionUtils.isNotEmpty(proposedPositions)) {
             employeeDto.setStatus(proposedPositions.get(0).getStatus());
+        }
+    }
+
+    private void populateSkill(Employee employee, EmployeeDto employeeDto) {
+        PrimarySkill skill = employee.getPrimarySkill();
+        if (Objects.nonNull(skill)) {
+            employeeDto.setSkill(StringUtils.defaultString(skill.getName()));
+            employeeDto.setSkillId(StringUtils.defaultString(skill.getUpsaId()));
         }
     }
 

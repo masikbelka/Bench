@@ -54,7 +54,7 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
     public EmployeeDto getBenchEmployee(String upsaId) {
         if (StringUtils.isNotBlank(upsaId)) {
             Employee employee = employeeService.findByUpsaId(upsaId);
-            return populateNewDtoEmployee(employee);
+            return convertEmployeeDto(employee);
         }
         return new EmployeeDto();
     }
@@ -69,22 +69,6 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
         return new EmployeeDto();
     }
 
-    private List<EmployeeDto> convertEmployeesToEmployeeDtos(Iterable<Employee> employees) {
-        final List<EmployeeDto> resultEmployees = new ArrayList<>();
-        for (Employee employee : employees) {
-            EmployeeDto employeeDto = populateNewDtoEmployee(employee);
-
-            resultEmployees.add(employeeDto);
-        }
-        return resultEmployees;
-    }
-
-    private EmployeeDto populateNewDtoEmployee(Employee employee) {
-        EmployeeDto employeeDto = new EmployeeDto();
-        employeeDtoPopulator.populate(employee, employeeDto);
-        return employeeDto;
-    }
-
     @Override
     public CommentHistoryDto getBenchEmployeeCommentHistory(String upsaId) {
         return new CommentHistoryDto();
@@ -93,5 +77,19 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
     @Override
     public List<EmployeeSimpleViewDto> suggestEmployees(String query) {
         return new ArrayList<>();
+    }
+
+    private List<EmployeeDto> convertEmployeesToEmployeeDtos(Iterable<Employee> employees) {
+        final List<EmployeeDto> resultEmployees = new ArrayList<>();
+        for (Employee employee : employees) {
+            resultEmployees.add(convertEmployeeDto(employee));
+        }
+        return resultEmployees;
+    }
+
+    private EmployeeDto convertEmployeeDto(Employee employee) {
+        EmployeeDto employeeDto = new EmployeeDto();
+        employeeDtoPopulator.populate(employee, employeeDto);
+        return employeeDto;
     }
 }
