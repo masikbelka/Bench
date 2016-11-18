@@ -12,14 +12,16 @@ public class EmployeeDto {
     private String fullName;
     private String manager;
     private String managerId;
+
     private String skill;
     private String skillId;
+
     private TitleDto title;
     private LanguageLevelDto languageLevel;
     private String availableFrom;
     private String availableTill;
     private List<ProjectWorkloadDto> workload = new ArrayList<>();
-    private String status;
+
     private List<ProposedPositionsDto> proposedPositions = new ArrayList<>();
     private String comment;
     private int daysOnBench;
@@ -90,15 +92,6 @@ public class EmployeeDto {
 
     public void setLanguageLevel(LanguageLevelDto languageLevel) {
         this.languageLevel = languageLevel;
-    }
-
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getComment() {

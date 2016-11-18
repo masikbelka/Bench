@@ -4,17 +4,23 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import com.epam.bench.domain.Employee;
+import com.epam.bench.domain.JobFunction;
 import com.epam.bench.domain.LanguageLevel;
 import com.epam.bench.domain.PrimarySkill;
+import com.epam.bench.domain.Title;
+import com.epam.bench.facades.ProjectWorkloadFacade;
 import com.epam.bench.facades.populators.Populator;
 import com.epam.bench.service.dto.bench.EmployeeDto;
 import com.epam.bench.service.dto.bench.LanguageLevelDto;
 import com.epam.bench.service.dto.bench.ProposedPositionsDto;
+import com.epam.bench.service.dto.bench.TitleDto;
 import com.epam.bench.service.util.ServiceUtil;
 
 /**
@@ -22,6 +28,9 @@ import com.epam.bench.service.util.ServiceUtil;
  */
 @Component
 public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
+
+    @Inject
+    private ProjectWorkloadFacade projectWorkloadFacade;
 
     @Override
     public void populate(Employee employee, EmployeeDto employeeDto) {
@@ -37,17 +46,26 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
         employeeDto.setAvailableTill(dateOrDefault(employee.getAvailableFrom()));
 
         populateSkill(employee, employeeDto);
+        populateTitle(employee, employeeDto);
 
         employeeDto.setComment(StringUtils.defaultString(employee.getComment()));
 
         populateProposalPositions(employee, employeeDto);
 
-        populateReleasedFromProject(employee, employeeDto);
+        populateWorkload(employee, employeeDto);
 
-        List<ProposedPositionsDto> proposedPositions = employeeDto.getProposedPositions();
-        if (CollectionUtils.isNotEmpty(proposedPositions)) {
-            employeeDto.setStatus(proposedPositions.get(0).getStatus());
+        employeeDto.setDaysOnBench(projectWorkloadFacade.getDaysOnBench(employee));
+
+    }
+
+    private void populateTitle(Employee employee, EmployeeDto employeeDto) {
+        TitleDto titleDto = new TitleDto();
+        JobFunction jobFunction = employee.getJobFunction();
+        if (Objects.nonNull(jobFunction)) {
+            titleDto.setFullTitle(jobFunction.getName());
+            titleDto.setShortTitle(jobFunction.getPrefix());
         }
+        employeeDto.setTitle(titleDto);
     }
 
     private void populateSkill(Employee employee, EmployeeDto employeeDto) {
@@ -58,7 +76,7 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
         }
     }
 
-    private void populateReleasedFromProject(Employee source, EmployeeDto target) {
+    private void populateWorkload(Employee source, EmployeeDto target) {
 
     }
 
