@@ -44,9 +44,13 @@
         <dd>
             <span data-translate="{{'benchApp.Gender.' + vm.employee.gender}}">{{vm.employee.gender}}</span>
         </dd>
+        <dt><span data-translate="benchApp.employee.probability">Probability</span></dt>
+        <dd>
+            <span data-translate="{{'benchApp.Probability.' + vm.employee.probability}}">{{vm.employee.probability}}</span>
+        </dd>
         <dt><span data-translate="benchApp.employee.probation">Probation</span></dt>
         <dd>
-            <a ui-sref="probation-status-detail({id:vm.employee.probation.id})">{{vm.employee.probation.id}}</a>
+            <a ui-sref="probation-status-detail({id:vm.employee.probation.id})">{{vm.employee.probation.id}} {{vm.employee.probation.id}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.location">Location</span></dt>
         <dd>

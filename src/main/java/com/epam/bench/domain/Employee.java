@@ -15,6 +15,8 @@ import java.util.Objects;
 
 import com.epam.bench.domain.enumeration.Gender;
 
+import com.epam.bench.domain.enumeration.Probability;
+
 /**
  * A Employee.
  */
@@ -64,6 +66,10 @@ public class Employee implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "probability")
+    private Probability probability;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -253,6 +259,19 @@ public class Employee implements Serializable {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public Probability getProbability() {
+        return probability;
+    }
+
+    public Employee probability(Probability probability) {
+        this.probability = probability;
+        return this;
+    }
+
+    public void setProbability(Probability probability) {
+        this.probability = probability;
     }
 
     public ProbationStatus getProbation() {
@@ -493,6 +512,7 @@ public class Employee implements Serializable {
             ", hireDate='" + hireDate + "'" +
             ", availableFrom='" + availableFrom + "'" +
             ", gender='" + gender + "'" +
+            ", probability='" + probability + "'" +
             '}';
     }
 }

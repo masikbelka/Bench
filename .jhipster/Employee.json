@@ -144,6 +144,11 @@
             "fieldName": "gender",
             "fieldType": "Gender",
             "fieldValues": "MALE,FEMALE"
+        },
+        {
+            "fieldName": "probability",
+            "fieldType": "Probability",
+            "fieldValues": "LOW,MEDIUM,HIGH"
         }
     ],
     "changelogDate": "20161026182428",

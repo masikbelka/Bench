@@ -26,6 +26,7 @@
             "hireDate": "Hire Date",
             "availableFrom": "Available From",
             "gender": "Gender",
+            "probability": "Probability",
             "probation": "Probation",
             "location": "Location",
             "primarySkill": "Primary Skill",

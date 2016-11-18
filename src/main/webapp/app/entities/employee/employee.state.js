@@ -27,6 +27,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('employee');
                     $translatePartialLoader.addPart('gender');
+                    $translatePartialLoader.addPart('probability');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -50,6 +51,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('employee');
                     $translatePartialLoader.addPart('gender');
+                    $translatePartialLoader.addPart('probability');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Employee', function($stateParams, Employee) {
@@ -116,6 +118,7 @@
                                 hireDate: null,
                                 availableFrom: null,
                                 gender: null,
+                                probability: null,
                                 id: null
                             };
                         }

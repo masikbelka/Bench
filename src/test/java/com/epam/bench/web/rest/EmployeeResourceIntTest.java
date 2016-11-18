@@ -36,6 +36,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.epam.bench.domain.enumeration.Gender;
+import com.epam.bench.domain.enumeration.Probability;
 /**
  * Test class for the EmployeeResource REST controller.
  *
@@ -76,6 +77,9 @@ public class EmployeeResourceIntTest {
 
     private static final Gender DEFAULT_GENDER = Gender.MALE;
     private static final Gender UPDATED_GENDER = Gender.FEMALE;
+
+    private static final Probability DEFAULT_PROBABILITY = Probability.LOW;
+    private static final Probability UPDATED_PROBABILITY = Probability.MEDIUM;
 
     @Inject
     private EmployeeRepository employeeRepository;
@@ -126,7 +130,8 @@ public class EmployeeResourceIntTest {
                 .active(DEFAULT_ACTIVE)
                 .hireDate(DEFAULT_HIRE_DATE)
                 .availableFrom(DEFAULT_AVAILABLE_FROM)
-                .gender(DEFAULT_GENDER);
+                .gender(DEFAULT_GENDER)
+                .probability(DEFAULT_PROBABILITY);
         return employee;
     }
 
@@ -162,6 +167,7 @@ public class EmployeeResourceIntTest {
         assertThat(testEmployee.getHireDate()).isEqualTo(DEFAULT_HIRE_DATE);
         assertThat(testEmployee.getAvailableFrom()).isEqualTo(DEFAULT_AVAILABLE_FROM);
         assertThat(testEmployee.getGender()).isEqualTo(DEFAULT_GENDER);
+        assertThat(testEmployee.getProbability()).isEqualTo(DEFAULT_PROBABILITY);
 
         // Validate the Employee in ElasticSearch
         Employee employeeEs = employeeSearchRepository.findOne(testEmployee.getId());
@@ -242,7 +248,8 @@ public class EmployeeResourceIntTest {
                 .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.booleanValue())))
                 .andExpect(jsonPath("$.[*].hireDate").value(hasItem(DEFAULT_HIRE_DATE_STR)))
                 .andExpect(jsonPath("$.[*].availableFrom").value(hasItem(DEFAULT_AVAILABLE_FROM_STR)))
-                .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())));
+                .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
+                .andExpect(jsonPath("$.[*].probability").value(hasItem(DEFAULT_PROBABILITY.toString())));
     }
 
     @Test
@@ -265,7 +272,8 @@ public class EmployeeResourceIntTest {
             .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.booleanValue()))
             .andExpect(jsonPath("$.hireDate").value(DEFAULT_HIRE_DATE_STR))
             .andExpect(jsonPath("$.availableFrom").value(DEFAULT_AVAILABLE_FROM_STR))
-            .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()));
+            .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
+            .andExpect(jsonPath("$.probability").value(DEFAULT_PROBABILITY.toString()));
     }
 
     @Test
@@ -296,7 +304,8 @@ public class EmployeeResourceIntTest {
                 .active(UPDATED_ACTIVE)
                 .hireDate(UPDATED_HIRE_DATE)
                 .availableFrom(UPDATED_AVAILABLE_FROM)
-                .gender(UPDATED_GENDER);
+                .gender(UPDATED_GENDER)
+                .probability(UPDATED_PROBABILITY);
 
         restEmployeeMockMvc.perform(put("/api/employees")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -317,6 +326,7 @@ public class EmployeeResourceIntTest {
         assertThat(testEmployee.getHireDate()).isEqualTo(UPDATED_HIRE_DATE);
         assertThat(testEmployee.getAvailableFrom()).isEqualTo(UPDATED_AVAILABLE_FROM);
         assertThat(testEmployee.getGender()).isEqualTo(UPDATED_GENDER);
+        assertThat(testEmployee.getProbability()).isEqualTo(UPDATED_PROBABILITY);
 
         // Validate the Employee in ElasticSearch
         Employee employeeEs = employeeSearchRepository.findOne(testEmployee.getId());
@@ -365,6 +375,7 @@ public class EmployeeResourceIntTest {
             .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.booleanValue())))
             //.andExpect(jsonPath("$.[*].hireDate").value(hasItem(DEFAULT_HIRE_DATE_STR)))
             //.andExpect(jsonPath("$.[*].availableFrom").value(hasItem(DEFAULT_AVAILABLE_FROM_STR)))
-            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())));
+            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
+            .andExpect(jsonPath("$.[*].probability").value(hasItem(DEFAULT_PROBABILITY.toString())));
     }
 }

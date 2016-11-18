@@ -46,6 +46,7 @@
                     <th jh-sort-by="hireDate"><span data-translate="benchApp.employee.hireDate">Hire Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="availableFrom"><span data-translate="benchApp.employee.availableFrom">Available From</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="gender"><span data-translate="benchApp.employee.gender">Gender</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="probability"><span data-translate="benchApp.employee.probability">Probability</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="probation.id"><span data-translate="benchApp.employee.probation">Probation</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="location.id"><span data-translate="benchApp.employee.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="primarySkill.id"><span data-translate="benchApp.employee.primarySkill">Primary Skill</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -70,6 +71,7 @@
                     <td>{{employee.hireDate | date:'medium'}}</td>
                     <td>{{employee.availableFrom | date:'medium'}}</td>
                     <td data-translate="{{'benchApp.Gender.' + employee.gender}}">{{employee.gender}}</td>
+                    <td data-translate="{{'benchApp.Probability.' + employee.probability}}">{{employee.probability}}</td>
                     <td>
                         <a ui-sref="probation-status-detail({id:employee.probation.id})">{{employee.probation.id}}</a>
                     </td>
