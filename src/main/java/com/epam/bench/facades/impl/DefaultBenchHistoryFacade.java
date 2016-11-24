@@ -1,5 +1,6 @@
 package com.epam.bench.facades.impl;
 
+import java.time.ZonedDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.epam.bench.domain.BenchHistory;
 import com.epam.bench.domain.Employee;
+import com.epam.bench.domain.User;
 import com.epam.bench.facades.BenchHistoryFacade;
 import com.epam.bench.service.BenchHistoryService;
 
@@ -35,5 +37,22 @@ public class DefaultBenchHistoryFacade implements BenchHistoryFacade {
             history = Optional.of(histories.get(histories.size() - 1));
         }
         return history;
+    }
+
+    @Override
+    public void releaseEmployeeFromBench(BenchHistory benchHistory, User user) {
+        benchHistory.setValidTo(ZonedDateTime.now());
+        benchHistory.setBench(Boolean.FALSE);
+        benchHistoryService.save(benchHistory);
+    }
+
+    @Override
+    public BenchHistory createNewEntry(Employee employee, User user) {
+        BenchHistory history = new BenchHistory();
+        history.setBench(Boolean.TRUE);
+        history.setCreatedTime(ZonedDateTime.now());
+        history.setEmployee(employee);
+        history.setManagerId(user.getUpsaId());
+        return benchHistoryService.save(history);
     }
 }

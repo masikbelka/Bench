@@ -17,10 +17,13 @@ import org.springframework.stereotype.Service;
 
 import com.epam.bench.domain.BenchHistory;
 import com.epam.bench.domain.Employee;
+import com.epam.bench.domain.User;
 import com.epam.bench.facades.BenchHistoryFacade;
 import com.epam.bench.facades.EmployeeFacade;
 import com.epam.bench.facades.populators.Populator;
 import com.epam.bench.security.SecurityUtils;
+import com.epam.bench.service.BenchHistoryService;
+import com.epam.bench.service.UserService;
 import com.epam.bench.service.dto.bench.CommentHistoryDto;
 import com.epam.bench.service.dto.bench.EmployeeSimpleViewDto;
 import com.epam.bench.service.dto.bench.form.UpdateEmployeeFormDto;
@@ -39,6 +42,8 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
     @Inject
     private EmployeeService employeeService;
     @Inject
+    private UserService userService;
+    @Inject
     private Populator<Employee, EmployeeDto> employeeDtoPopulator;
     @Inject
     private BenchHistoryFacade benchHistoryFacade;
@@ -56,19 +61,22 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
     @Override
     public void removeFromBench(String upsaId) {
         ServiceUtil.validateParameterNotBlank(upsaId);
-        String currentUserLogin = SecurityUtils.getCurrentUserLogin();
-        employeeService.findByUpsaId(upsaId);
-        //Optional<BenchHistory> history = benchHistoryFacade.getLastHistoryEntry(employee);
+
+        final Employee employee = employeeService.findByUpsaId(upsaId);
+        final Optional<BenchHistory> oHistory = benchHistoryFacade.getLastHistoryEntry(employee);
+        final User user = userService.getUserWithAuthorities();
+
+        BenchHistory history = oHistory.orElseGet(() -> benchHistoryFacade.createNewEntry(employee, user));
+        benchHistoryFacade.releaseEmployeeFromBench(history, user);
 
     }
 
     @Override
     public Optional<EmployeeDto> getBenchEmployee(String upsaId) {
-        if (StringUtils.isNotBlank(upsaId)) {
-            Employee employee = employeeService.findByUpsaId(upsaId);
-            if (isEmployeeOnBench(employee)) {
-                return Optional.of(convertEmployeeDto(employee));
-            }
+        ServiceUtil.validateParameterNotBlank(upsaId);
+        Employee employee = employeeService.findByUpsaId(upsaId);
+        if (isEmployeeOnBench(employee)) {
+            return Optional.of(convertEmployeeDto(employee));
         }
         return Optional.empty();
     }

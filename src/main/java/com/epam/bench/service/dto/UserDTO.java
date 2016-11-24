@@ -26,6 +26,8 @@ public class UserDTO {
     @Size(max = 50)
     private String lastName;
 
+    private String upsaId;
+
     @Email
     @Size(min = 5, max = 100)
     private String email;
@@ -42,9 +44,22 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getLangKey(),
+            user.getEmail(), user.getUpsaId(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
+    }
+
+    public UserDTO(String login, String firstName, String lastName,
+        String email, String upsaId, boolean activated, String langKey, Set<String> authorities) {
+
+        this.login = login;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.activated = activated;
+        this.langKey = langKey;
+        this.authorities = authorities;
+        this.upsaId = upsaId;
     }
 
     public UserDTO(String login, String firstName, String lastName,
@@ -85,6 +100,10 @@ public class UserDTO {
 
     public Set<String> getAuthorities() {
         return authorities;
+    }
+
+    public String getUpsaId() {
+        return upsaId;
     }
 
     @Override

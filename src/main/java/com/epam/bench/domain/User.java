@@ -58,6 +58,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(length = 100, unique = true)
     private String email;
 
+    @Column(name = "upsa_id")
+    private String upsaId;
+
     @NotNull
     @Column(nullable = false)
     private boolean activated = false;
@@ -77,7 +80,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Column(name = "reset_date", nullable = true)
     private ZonedDateTime resetDate = null;
-
     @JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -218,5 +220,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
             "}";
+    }
+
+    public String getUpsaId() {
+        return upsaId;
+    }
+
+    public void setUpsaId(String upsaId) {
+        this.upsaId = upsaId;
     }
 }
