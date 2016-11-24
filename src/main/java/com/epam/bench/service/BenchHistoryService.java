@@ -1,6 +1,8 @@
 package com.epam.bench.service;
 
 import com.epam.bench.domain.BenchHistory;
+import com.epam.bench.domain.Employee;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,7 +23,7 @@ public interface BenchHistoryService {
 
     /**
      *  Get all the benchHistories.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -46,9 +48,17 @@ public interface BenchHistoryService {
      * Search for the benchHistory corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<BenchHistory> search(String query, Pageable pageable);
+
+    /**
+     * Find all BenchHistories that related to this employee
+     *
+     * @param employee
+     * @return
+     */
+    List<BenchHistory> find(Employee employee);
 }

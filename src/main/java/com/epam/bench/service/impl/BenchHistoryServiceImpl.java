@@ -1,5 +1,6 @@
 package com.epam.bench.service.impl;
 
+import com.epam.bench.domain.Employee;
 import com.epam.bench.service.BenchHistoryService;
 import com.epam.bench.domain.BenchHistory;
 import com.epam.bench.repository.BenchHistoryRepository;
@@ -26,7 +27,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class BenchHistoryServiceImpl implements BenchHistoryService{
 
     private final Logger log = LoggerFactory.getLogger(BenchHistoryServiceImpl.class);
-    
+
     @Inject
     private BenchHistoryRepository benchHistoryRepository;
 
@@ -48,11 +49,11 @@ public class BenchHistoryServiceImpl implements BenchHistoryService{
 
     /**
      *  Get all the benchHistories.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<BenchHistory> findAll(Pageable pageable) {
         log.debug("Request to get all BenchHistories");
         Page<BenchHistory> result = benchHistoryRepository.findAll(pageable);
@@ -65,7 +66,7 @@ public class BenchHistoryServiceImpl implements BenchHistoryService{
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public BenchHistory findOne(Long id) {
         log.debug("Request to get BenchHistory : {}", id);
         BenchHistory benchHistory = benchHistoryRepository.findOne(id);
@@ -94,5 +95,12 @@ public class BenchHistoryServiceImpl implements BenchHistoryService{
         log.debug("Request to search for a page of BenchHistories for query {}", query);
         Page<BenchHistory> result = benchHistorySearchRepository.search(queryStringQuery(query), pageable);
         return result;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<BenchHistory> find(Employee employee) {
+        log.debug("Request to find all BenchHistories for Employee : {}", employee);
+        return benchHistoryRepository.findByEmployee(employee);
     }
 }

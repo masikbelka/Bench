@@ -6,9 +6,9 @@ package com.epam.bench.service.dto.bench;
 public class ProposedPositionsDto {
 
     private String status;
-    private String opportunityCode;
-    private String opportunityType;
-    private String opportunityId;
+    private String name;
+    private String type;
+    private String id;
 
     public ProposedPositionsDto() {
     }
@@ -21,27 +21,27 @@ public class ProposedPositionsDto {
         this.status = status;
     }
 
-    public String getOpportunityCode() {
-        return opportunityCode;
+    public String getName() {
+        return name;
     }
 
-    public void setOpportunityCode(String opportunityCode) {
-        this.opportunityCode = opportunityCode;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getOpportunityId() {
-        return opportunityId;
+    public String getId() {
+        return id;
     }
 
-    public void setOpportunityId(String opportunityId) {
-        this.opportunityId = opportunityId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getOpportunityType() {
-        return opportunityType;
+    public String getType() {
+        return type;
     }
 
-    public void setOpportunityType(String opportunityType) {
-        this.opportunityType = opportunityType;
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -1,12 +1,12 @@
 package com.epam.bench.facades.populators.impl;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +14,12 @@ import com.epam.bench.domain.Employee;
 import com.epam.bench.domain.JobFunction;
 import com.epam.bench.domain.LanguageLevel;
 import com.epam.bench.domain.PrimarySkill;
-import com.epam.bench.domain.Title;
+import com.epam.bench.domain.enumeration.Probability;
 import com.epam.bench.facades.ProjectWorkloadFacade;
 import com.epam.bench.facades.populators.Populator;
 import com.epam.bench.service.dto.bench.EmployeeDto;
 import com.epam.bench.service.dto.bench.LanguageLevelDto;
+import com.epam.bench.service.dto.bench.ProjectWorkloadDto;
 import com.epam.bench.service.dto.bench.ProposedPositionsDto;
 import com.epam.bench.service.dto.bench.TitleDto;
 import com.epam.bench.service.util.ServiceUtil;
@@ -56,6 +57,17 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
 
         employeeDto.setDaysOnBench(projectWorkloadFacade.getDaysOnBench(employee));
 
+        populateProbability(employee, employeeDto);
+
+    }
+
+    private void populateProbability(Employee employee, EmployeeDto employeeDto) {
+        Probability probability = employee.getProbability();
+        String probabilityString = StringUtils.EMPTY;
+        if (Objects.nonNull(probability)) {
+            probabilityString = probability.toString();
+        }
+        employeeDto.setProbability(probabilityString);
     }
 
     private void populateTitle(Employee employee, EmployeeDto employeeDto) {
@@ -76,8 +88,16 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
         }
     }
 
-    private void populateWorkload(Employee source, EmployeeDto target) {
+    private void populateWorkload(Employee employee, EmployeeDto employeeDto) {
+        List<ProjectWorkloadDto> workloadDto = new ArrayList<>();
+        ProjectWorkloadDto projectWorkloadDto = new ProjectWorkloadDto();
+        projectWorkloadDto.setType("Internal Project");
+        projectWorkloadDto.setName("EPM-TEST");
+        projectWorkloadDto.setWorkload(80);
+        projectWorkloadDto.setId("456432154651324621");
 
+        workloadDto.add(projectWorkloadDto);
+        employeeDto.setWorkload(workloadDto);
     }
 
     private void populateProposalPositions(Employee source, EmployeeDto target) {
@@ -88,15 +108,24 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
             for (ProposalsPosition sourcePosition : sourcePositions) {
                 ProposedPositionsDto targetPosition = new ProposedPositionsDto();
                 targetPosition.setStatus(sourcePosition.getStaffingStatus());
-                targetPosition.setOpportunityCode(sourcePosition.getOpportunityCode());
-                targetPosition.setOpportunityId(sourcePosition.getOpportunityId());
+                targetPosition.setName(sourcePosition.getName());
+                targetPosition.setId(sourcePosition.getId());
                 String opportunityContainerType = sourcePosition.getOpportunityContainerType();
-                targetPosition.setOpportunityType(getContainerType(opportunityContainerType));
+                targetPosition.setType(getContainerType(opportunityContainerType));
                 targetPositions.add(targetPosition);
             }
         }
 
         target.setProposedPositions(targetPositions);*/
+
+        List<ProposedPositionsDto> targetPositions = new ArrayList<>();
+        ProposedPositionsDto proposedPositionsDto = new ProposedPositionsDto();
+        proposedPositionsDto.setName("EPM-OPP");
+        proposedPositionsDto.setType("opportunities");
+        proposedPositionsDto.setId("12325469897432");
+        proposedPositionsDto.setStatus("PROPOSED");
+        targetPositions.add(proposedPositionsDto);
+        target.setProposedPositions(targetPositions);
     }
 
     private String getContainerType(String opportunityContainerType) {

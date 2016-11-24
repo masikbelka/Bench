@@ -7,7 +7,6 @@ public class ProjectWorkloadDto {
     private String id;
     private String name;
     private String type;
-    private String current;
     private int workload;
 
     public ProjectWorkloadDto() {
@@ -17,7 +16,6 @@ public class ProjectWorkloadDto {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.current = "";
     }
 
     public String getId() {
@@ -42,14 +40,6 @@ public class ProjectWorkloadDto {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(String current) {
-        this.current = current;
     }
 
     public int getWorkload() {

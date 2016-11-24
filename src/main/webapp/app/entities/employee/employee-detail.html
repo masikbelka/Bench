@@ -50,35 +50,35 @@
         </dd>
         <dt><span data-translate="benchApp.employee.probation">Probation</span></dt>
         <dd>
-            <a ui-sref="probation-status-detail({id:vm.employee.probation.id})">{{vm.employee.probation.id}} {{vm.employee.probation.id}}</a>
+            <a ui-sref="probation-status-detail({id:vm.employee.probation.id})">{{vm.employee.probation.id}} {{vm.employee.probation.status}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.location">Location</span></dt>
         <dd>
-            <a ui-sref="location-detail({id:vm.employee.location.id})">{{vm.employee.location.id}}</a>
+            <a ui-sref="location-detail({id:vm.employee.location.id})">{{vm.employee.location.id}} {{vm.employee.location.upsaId}} {{vm.employee.location.name}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.primarySkill">Primary Skill</span></dt>
         <dd>
-            <a ui-sref="primary-skill-detail({id:vm.employee.primarySkill.id})">{{vm.employee.primarySkill.id}}</a>
+            <a ui-sref="primary-skill-detail({id:vm.employee.primarySkill.id})">{{vm.employee.primarySkill.id}} {{vm.employee.primarySkill.upsaId}} {{vm.employee.primarySkill.name}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.title">Title</span></dt>
         <dd>
-            <a ui-sref="title-detail({id:vm.employee.title.id})">{{vm.employee.title.id}}</a>
+            <a ui-sref="title-detail({id:vm.employee.title.id})">{{vm.employee.title.id}} {{vm.employee.title.name}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.englishLevel">English Level</span></dt>
         <dd>
-            <a ui-sref="language-level-detail({id:vm.employee.englishLevel.id})">{{vm.employee.englishLevel.id}}</a>
+            <a ui-sref="language-level-detail({id:vm.employee.englishLevel.id})">{{vm.employee.englishLevel.id}} {{vm.employee.englishLevel.speaking}} {{vm.employee.englishLevel.writing}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.productionStatus">Production Status</span></dt>
         <dd>
-            <a ui-sref="production-status-detail({id:vm.employee.productionStatus.id})">{{vm.employee.productionStatus.id}}</a>
+            <a ui-sref="production-status-detail({id:vm.employee.productionStatus.id})">{{vm.employee.productionStatus.id}} {{vm.employee.productionStatus.name}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.jobFunction">Job Function</span></dt>
         <dd>
-            <a ui-sref="job-function-detail({id:vm.employee.jobFunction.id})">{{vm.employee.jobFunction.id}}</a>
+            <a ui-sref="job-function-detail({id:vm.employee.jobFunction.id})">{{vm.employee.jobFunction.id}} {{vm.employee.jobFunction.prefix}} {{vm.employee.jobFunction.name}}</a>
         </dd>
         <dt><span data-translate="benchApp.employee.unit">Unit</span></dt>
         <dd>
-            <a ui-sref="unit-detail({id:vm.employee.unit.id})">{{vm.employee.unit.id}}</a>
+            <a ui-sref="unit-detail({id:vm.employee.unit.id})">{{vm.employee.unit.id}} {{vm.employee.unit.upsaId}} {{vm.employee.unit.name}} {{vm.employee.unit.owner}}</a>
         </dd>
     </dl>
 

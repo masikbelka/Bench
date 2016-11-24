@@ -1,10 +1,12 @@
 package com.epam.bench.facades;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.epam.bench.domain.Employee;
 import com.epam.bench.service.dto.bench.CommentHistoryDto;
 import com.epam.bench.service.dto.bench.EmployeeSimpleViewDto;
 import com.epam.bench.service.dto.bench.form.UpdateEmployeeFormDto;
@@ -19,7 +21,9 @@ public interface EmployeeFacade {
 
     void removeFromBench(String upsaId);
 
-    EmployeeDto getBenchEmployee(String upsaId);
+    Optional<EmployeeDto> getBenchEmployee(String upsaId);
+
+    boolean isEmployeeOnBench(Employee employee);
 
     EmployeeDto updateBenchEmployee(UpdateEmployeeFormDto employee);
 

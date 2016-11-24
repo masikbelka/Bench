@@ -1,6 +1,7 @@
 package com.epam.bench.repository;
 
 import com.epam.bench.domain.BenchHistory;
+import com.epam.bench.domain.Employee;
 
 import org.springframework.data.jpa.repository.*;
 
@@ -12,4 +13,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface BenchHistoryRepository extends JpaRepository<BenchHistory,Long> {
 
+    List<BenchHistory> findByEmployee(Employee employee);
 }

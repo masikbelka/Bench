@@ -36,7 +36,7 @@ import java.util.Optional;
  */
 @Api(value = "EmployeeDto", description = "")
 @RestController
-@RequestMapping("/api/bench")
+@RequestMapping("/api/bench/opportunity")
 public class EmployeeDtoResource {
 
     private final Logger log = LoggerFactory.getLogger(EmployeeDtoResource.class);
@@ -141,8 +141,8 @@ public class EmployeeDtoResource {
     @Timed
     public ResponseEntity<EmployeeDto> getBenchEmployee(@PathVariable String upsaId) {
         log.debug("REST request to get Employee : {}", upsaId);
-        EmployeeDto employee = employeeFacade.getBenchEmployee(upsaId);
-        return Optional.ofNullable(employee)
+        Optional<EmployeeDto> employee = employeeFacade.getBenchEmployee(upsaId);
+        return employee
             .map(result -> new ResponseEntity<>(
                 result,
                 HttpStatus.OK))

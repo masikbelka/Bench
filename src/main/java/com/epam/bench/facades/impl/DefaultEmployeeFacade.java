@@ -2,6 +2,8 @@ package com.epam.bench.facades.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import javax.inject.Inject;
 
@@ -13,14 +15,18 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.epam.bench.domain.BenchHistory;
 import com.epam.bench.domain.Employee;
+import com.epam.bench.facades.BenchHistoryFacade;
 import com.epam.bench.facades.EmployeeFacade;
 import com.epam.bench.facades.populators.Populator;
+import com.epam.bench.security.SecurityUtils;
 import com.epam.bench.service.dto.bench.CommentHistoryDto;
 import com.epam.bench.service.dto.bench.EmployeeSimpleViewDto;
 import com.epam.bench.service.dto.bench.form.UpdateEmployeeFormDto;
 import com.epam.bench.service.EmployeeService;
 import com.epam.bench.service.dto.bench.EmployeeDto;
+import com.epam.bench.service.util.ServiceUtil;
 
 /**
  * Created by Tetiana_Antonenko1
@@ -34,6 +40,8 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
     private EmployeeService employeeService;
     @Inject
     private Populator<Employee, EmployeeDto> employeeDtoPopulator;
+    @Inject
+    private BenchHistoryFacade benchHistoryFacade;
 
     @Override
     public Page<EmployeeDto> findAll(Pageable pageable) {
@@ -41,22 +49,35 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
         List<Employee> content = all.getContent();
 
         List<EmployeeDto> employeeDtos = convertEmployeesToEmployeeDtos(content);
-        Page<EmployeeDto> dtoPage = new PageImpl<>(employeeDtos, pageable, all.getTotalElements());
-        return dtoPage;
+
+        return new PageImpl<>(employeeDtos, pageable, all.getTotalElements());
     }
 
     @Override
     public void removeFromBench(String upsaId) {
+        ServiceUtil.validateParameterNotBlank(upsaId);
+        String currentUserLogin = SecurityUtils.getCurrentUserLogin();
+        employeeService.findByUpsaId(upsaId);
+        //Optional<BenchHistory> history = benchHistoryFacade.getLastHistoryEntry(employee);
 
     }
 
     @Override
-    public EmployeeDto getBenchEmployee(String upsaId) {
+    public Optional<EmployeeDto> getBenchEmployee(String upsaId) {
         if (StringUtils.isNotBlank(upsaId)) {
             Employee employee = employeeService.findByUpsaId(upsaId);
-            return convertEmployeeDto(employee);
+            if (isEmployeeOnBench(employee)) {
+                return Optional.of(convertEmployeeDto(employee));
+            }
         }
-        return new EmployeeDto();
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean isEmployeeOnBench(Employee employee) {
+        Optional<BenchHistory> history = benchHistoryFacade.getLastHistoryEntry(employee);
+
+        return history.map(benchHistory -> benchHistory.isBench() && Objects.isNull(benchHistory.getValidTo())).orElse(false);
     }
 
     @Override
