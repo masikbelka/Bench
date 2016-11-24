@@ -159,10 +159,10 @@ public class EmployeeDtoResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<CommentHistoryDto> getBenchEmployeeCommentHistory(@PathVariable String upsaId) {
+    public ResponseEntity<List<CommentHistoryDto>> getBenchEmployeeCommentHistory(@PathVariable String upsaId) {
         log.debug("REST request to get Employee : {}", upsaId);
-        CommentHistoryDto history = employeeFacade.getBenchEmployeeCommentHistory(upsaId);
-        return Optional.ofNullable(history)
+        Optional<List<CommentHistoryDto>> history = employeeFacade.getBenchEmployeeCommentHistory(upsaId);
+        return history
             .map(result -> new ResponseEntity<>(
                 result,
                 HttpStatus.OK))

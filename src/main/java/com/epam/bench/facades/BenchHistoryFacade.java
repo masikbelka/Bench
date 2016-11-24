@@ -13,7 +13,9 @@ public interface BenchHistoryFacade {
 
     Optional<BenchHistory> getLastHistoryEntry(Employee employee);
 
-    void releaseEmployeeFromBench(BenchHistory benchHistory, User user);
+    void releaseEmployeeFromBench(BenchHistory benchHistory);
 
     BenchHistory createNewEntry(Employee employee, User user);
+
+    BenchHistory createNewEntry(Employee employee);
 }

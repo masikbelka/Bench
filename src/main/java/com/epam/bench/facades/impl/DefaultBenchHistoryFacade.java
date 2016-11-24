@@ -15,6 +15,7 @@ import com.epam.bench.domain.Employee;
 import com.epam.bench.domain.User;
 import com.epam.bench.facades.BenchHistoryFacade;
 import com.epam.bench.service.BenchHistoryService;
+import com.epam.bench.service.UserService;
 
 /**
  * Created by Tetiana_Antonenko1
@@ -24,6 +25,8 @@ public class DefaultBenchHistoryFacade implements BenchHistoryFacade {
 
     @Inject
     private BenchHistoryService benchHistoryService;
+    @Inject
+    private UserService userService;
 
     @Override
     public Optional<BenchHistory> getLastHistoryEntry(Employee employee) {
@@ -40,7 +43,7 @@ public class DefaultBenchHistoryFacade implements BenchHistoryFacade {
     }
 
     @Override
-    public void releaseEmployeeFromBench(BenchHistory benchHistory, User user) {
+    public void releaseEmployeeFromBench(BenchHistory benchHistory) {
         benchHistory.setValidTo(ZonedDateTime.now());
         benchHistory.setBench(Boolean.FALSE);
         benchHistoryService.save(benchHistory);
@@ -54,5 +57,10 @@ public class DefaultBenchHistoryFacade implements BenchHistoryFacade {
         history.setEmployee(employee);
         history.setManagerId(user.getUpsaId());
         return benchHistoryService.save(history);
+    }
+
+    @Override
+    public BenchHistory createNewEntry(Employee employee) {
+        return createNewEntry(employee, userService.getUserWithAuthorities());
     }
 }

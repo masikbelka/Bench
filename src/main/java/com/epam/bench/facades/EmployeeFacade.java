@@ -29,7 +29,7 @@ public interface EmployeeFacade {
 
     EmployeeDto saveEmployeeToBench(String upsaId);
 
-    CommentHistoryDto getBenchEmployeeCommentHistory(String upsaId);
+    Optional<List<CommentHistoryDto>> getBenchEmployeeCommentHistory(String upsaId);
 
     List<EmployeeSimpleViewDto> suggestEmployees(String query);
 }

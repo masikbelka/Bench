@@ -22,7 +22,7 @@ import com.epam.bench.service.dto.bench.LanguageLevelDto;
 import com.epam.bench.service.dto.bench.ProjectWorkloadDto;
 import com.epam.bench.service.dto.bench.ProposedPositionsDto;
 import com.epam.bench.service.dto.bench.TitleDto;
-import com.epam.bench.service.util.ServiceUtil;
+import com.epam.bench.service.util.ServiceUtils;
 
 /**
  * Created by Tetiana_Antonenko.
@@ -35,6 +35,9 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
 
     @Override
     public void populate(Employee employee, EmployeeDto employeeDto) {
+        if (Objects.isNull(employee)) {
+            return;
+        }
         employeeDto.setUpsaId(StringUtils.defaultString(employee.getUpsaId()));
         employeeDto.setManagerId(StringUtils.defaultString(employee.getManagerId()));
         employeeDto.setManager(StringUtils.defaultString(employee.getManagerFullName()));
@@ -149,7 +152,7 @@ public class EmployeeDtoPopulator implements Populator<Employee, EmployeeDto> {
         if (Objects.nonNull(availableFrom)) {
             dateToFormat = availableFrom;
         }
-        return ServiceUtil.getFormattedYearDate(dateToFormat);
+        return ServiceUtils.getFormattedYearDate(dateToFormat);
     }
 
 

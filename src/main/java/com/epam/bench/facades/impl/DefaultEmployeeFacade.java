@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -17,19 +16,19 @@ import org.springframework.stereotype.Service;
 
 import com.epam.bench.domain.BenchHistory;
 import com.epam.bench.domain.Employee;
-import com.epam.bench.domain.User;
 import com.epam.bench.facades.BenchHistoryFacade;
+import com.epam.bench.facades.CommentHistoryFacade;
 import com.epam.bench.facades.EmployeeFacade;
+import com.epam.bench.facades.ProjectHistoryFacade;
+import com.epam.bench.facades.integration.UpsaFacade;
+import com.epam.bench.facades.integration.OpportunityFacade;
 import com.epam.bench.facades.populators.Populator;
-import com.epam.bench.security.SecurityUtils;
-import com.epam.bench.service.BenchHistoryService;
-import com.epam.bench.service.UserService;
+import com.epam.bench.service.EmployeeService;
 import com.epam.bench.service.dto.bench.CommentHistoryDto;
+import com.epam.bench.service.dto.bench.EmployeeDto;
 import com.epam.bench.service.dto.bench.EmployeeSimpleViewDto;
 import com.epam.bench.service.dto.bench.form.UpdateEmployeeFormDto;
-import com.epam.bench.service.EmployeeService;
-import com.epam.bench.service.dto.bench.EmployeeDto;
-import com.epam.bench.service.util.ServiceUtil;
+import com.epam.bench.service.util.ServiceUtils;
 
 /**
  * Created by Tetiana_Antonenko1
@@ -42,11 +41,17 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
     @Inject
     private EmployeeService employeeService;
     @Inject
-    private UserService userService;
-    @Inject
     private Populator<Employee, EmployeeDto> employeeDtoPopulator;
     @Inject
     private BenchHistoryFacade benchHistoryFacade;
+    @Inject
+    private ProjectHistoryFacade projectHistoryFacade;
+    @Inject
+    private UpsaFacade upsaFacade;
+    @Inject
+    private OpportunityFacade opportunityFacade;
+    @Inject
+    private CommentHistoryFacade commentHistoryFacade;
 
     @Override
     public Page<EmployeeDto> findAll(Pageable pageable) {
@@ -60,20 +65,19 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
 
     @Override
     public void removeFromBench(String upsaId) {
-        ServiceUtil.validateParameterNotBlank(upsaId);
+        ServiceUtils.validateParameterNotBlank(upsaId);
 
         final Employee employee = employeeService.findByUpsaId(upsaId);
         final Optional<BenchHistory> oHistory = benchHistoryFacade.getLastHistoryEntry(employee);
-        final User user = userService.getUserWithAuthorities();
 
-        BenchHistory history = oHistory.orElseGet(() -> benchHistoryFacade.createNewEntry(employee, user));
-        benchHistoryFacade.releaseEmployeeFromBench(history, user);
+        BenchHistory history = oHistory.orElseGet(() -> benchHistoryFacade.createNewEntry(employee));
+        benchHistoryFacade.releaseEmployeeFromBench(history);
 
     }
 
     @Override
     public Optional<EmployeeDto> getBenchEmployee(String upsaId) {
-        ServiceUtil.validateParameterNotBlank(upsaId);
+        ServiceUtils.validateParameterNotBlank(upsaId);
         Employee employee = employeeService.findByUpsaId(upsaId);
         if (isEmployeeOnBench(employee)) {
             return Optional.of(convertEmployeeDto(employee));
@@ -95,17 +99,38 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
 
     @Override
     public EmployeeDto saveEmployeeToBench(String upsaId) {
-        return new EmployeeDto();
+        ServiceUtils.validateParameterNotBlank(upsaId);
+
+        Optional<Employee> oUpsaEmployee = upsaFacade.getEmployee(upsaId);
+        Employee dbEmployee = employeeService.findByUpsaId(upsaId);
+        Employee employee = null;
+        if (oUpsaEmployee.isPresent()) {
+            Employee upsaEmployee = oUpsaEmployee.get();
+            if (Objects.isNull(dbEmployee)) {
+                employee = employeeService.save(upsaEmployee);
+                benchHistoryFacade.createNewEntry(employee);
+            } else {
+                updateSignificantEmployeeFields(dbEmployee, upsaEmployee);
+                employee = employeeService.save(dbEmployee);
+                benchHistoryFacade.createNewEntry(employee);
+            }
+            employee.setProjectsWorkloads(projectHistoryFacade.getAndUpdateEmployeeWorkload(upsaId));
+            employee.setOpportunityPositions(opportunityFacade.getOpportunities(upsaId));
+        }
+
+        return convertEmployeeDto(employee);
     }
 
     @Override
-    public CommentHistoryDto getBenchEmployeeCommentHistory(String upsaId) {
-        return new CommentHistoryDto();
+    public Optional<List<CommentHistoryDto>> getBenchEmployeeCommentHistory(String upsaId) {
+        ServiceUtils.validateParameterNotBlank(upsaId);
+
+        return commentHistoryFacade.getAll(upsaId);
     }
 
     @Override
     public List<EmployeeSimpleViewDto> suggestEmployees(String query) {
-        return new ArrayList<>();
+        return upsaFacade.getSuggestedEmployees(query);
     }
 
     private List<EmployeeDto> convertEmployeesToEmployeeDtos(Iterable<Employee> employees) {
@@ -120,5 +145,19 @@ public class DefaultEmployeeFacade implements EmployeeFacade {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDtoPopulator.populate(employee, employeeDto);
         return employeeDto;
+    }
+
+    private void updateSignificantEmployeeFields(Employee dbEmployee, Employee upsaEmployee) {
+        dbEmployee.setActive(upsaEmployee.isActive());
+        dbEmployee.setManagerId(upsaEmployee.getManagerId());
+        dbEmployee.setManagerFullName(upsaEmployee.getManagerFullName());
+        dbEmployee.setFullName(upsaEmployee.getFullName());
+        dbEmployee.setEnglishLevel(upsaEmployee.getEnglishLevel());
+        dbEmployee.setUnit(upsaEmployee.getUnit());
+        dbEmployee.setPrimarySkill(upsaEmployee.getPrimarySkill());
+        dbEmployee.setTitle(upsaEmployee.getTitle());
+        dbEmployee.setJobFunction(upsaEmployee.getJobFunction());
+        dbEmployee.setProductionStatus(upsaEmployee.getProductionStatus());
+        dbEmployee.setLocation(upsaEmployee.getLocation());
     }
 }

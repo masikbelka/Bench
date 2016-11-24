@@ -12,7 +12,7 @@ import org.springframework.context.MessageSource;
 /**
  * Created by Tetiana_Antonenko1
  */
-public final class ServiceUtil {
+public final class ServiceUtils {
 
     private static final String STANDART_MESSAGE = "validation.error.blank.parameter.message";
     @Inject
@@ -22,7 +22,7 @@ public final class ServiceUtil {
 
     private static final DateTimeFormatter formatter_yyyyMMdd = DateTimeFormatter.ofPattern(DATE_PATTERN_yyyyMMdd);
 
-    private ServiceUtil() {
+    private ServiceUtils() {
     }
 
     public static String getFormattedYearDate(final ZonedDateTime date) {
