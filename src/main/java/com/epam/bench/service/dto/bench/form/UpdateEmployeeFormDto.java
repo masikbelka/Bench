@@ -1,14 +1,22 @@
 package com.epam.bench.service.dto.bench.form;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.constraints.Size;
 
 import com.epam.bench.service.dto.bench.LanguageLevelDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import static com.epam.bench.domain.constants.BenchAppConstants.INCOMING_DATE_PATTERN;
 
 /**
  * Created by Tetiana_Antonenko.
  */
+@ApiModel
 public class UpdateEmployeeFormDto {
 
+    @ApiModelProperty(required = true)
     private String upsaId;
     private String managerName;
     private String fullName;
@@ -17,9 +25,13 @@ public class UpdateEmployeeFormDto {
     private String title;
     private LanguageLevelDto language;
     private String status;
+    @JsonFormat(pattern = INCOMING_DATE_PATTERN)
     private String availableFrom;
+    @JsonFormat(pattern = INCOMING_DATE_PATTERN)
+    private String availableTill;
+    @ApiModelProperty(allowableValues = "LOW,MEDIUM,HIGH")
+    private String probability;
     private String pastProjects;
-    private String selectedDate;
     @Size(max=256)
     private String comment;
 
@@ -111,11 +123,19 @@ public class UpdateEmployeeFormDto {
         this.comment = comment;
     }
 
-    public String getSelectedDate() {
-        return selectedDate;
+    public String getAvailableTill() {
+        return availableTill;
     }
 
-    public void setSelectedDate(String selectedDate) {
-        this.selectedDate = selectedDate;
+    public void setAvailableTill(String availableTill) {
+        this.availableTill = availableTill;
+    }
+
+    public String getProbability() {
+        return probability;
+    }
+
+    public void setProbability(String probability) {
+        this.probability = probability;
     }
 }
