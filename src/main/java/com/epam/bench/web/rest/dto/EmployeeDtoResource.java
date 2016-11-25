@@ -36,7 +36,7 @@ import java.util.Optional;
  */
 @Api(value = "EmployeeDto", description = "")
 @RestController
-@RequestMapping("/api/bench/opportunity")
+@RequestMapping("/api/bench")
 public class EmployeeDtoResource {
 
     private final Logger log = LoggerFactory.getLogger(EmployeeDtoResource.class);
