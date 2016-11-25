@@ -26,19 +26,19 @@ import com.epam.bench.service.integration.UpsaService;
 public class DefaultUpsaService implements UpsaService {
 
     private final Logger LOG = LoggerFactory.getLogger(DefaultUpsaService.class);
-    @Inject
-    private RestTemplate restTemplate;
+   /* @Inject
+    private RestTemplate restTemplate;*/
 
     @Override
     public EmployeeSimpleView getEmployee(String employeeId) {
         HttpEntity<String> entity = getStringHttpEntity();
 
-        try {
+       /* try {
             return restTemplate.exchange(UpsaRestApiUrls.BASE_URL_PRODUCTION_LATEST + "employees/{employeeId}?compose=probation,unit,location", HttpMethod.GET, entity,
                 CustomEmployeeComposeObjectDto.class, employeeId).getBody().getEmployeeSimpleView();
         } catch (Exception e) {
             LOG.error(e.getMessage());
-        }
+        }*/
         return new EmployeeSimpleView();
     }
 
