@@ -85,6 +85,13 @@ jhipster:
         timeToLiveSeconds: 3600
         ehcache:
             maxBytesLocalHeap: 16M
+    cors: #By default CORS are not enabled. Uncomment to enable.
+        allowed-origins: "*"
+        allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        allowed-headers: "*"
+        exposed-headers:
+        allow-credentials: true
+        max-age: 1800
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: epam.bench@gmail.com
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
